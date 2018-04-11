@@ -186,31 +186,8 @@ public class AirBdbServiceImpl implements AirBdbService {
         return room;
     }
 
-    /* saves a new reservation and returns it */
-    public Reservation createReservation(long apartmentId, long userId, Date from, Date to){
-        Session session = repository.sessionFactory.openSession();
-        Transaction tx = null;
-        Reservation reservation = null;
-        Apartment apartment = this.getApartmentById(apartmentId);
-        User user = this.getUserById(userId);
-
-        try {
-            tx = session.beginTransaction();
-            reservation = new Reservation(from, to, apartment, user);
-            session.save(reservation);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        return reservation;
-    }
-
     /* returns an apartment given an id, null otherwise*/
-    private Apartment getApartmentById(long apartmentId) {
+    public Apartment getApartmentById(long apartmentId) {
         Session session = repository.sessionFactory.openSession();
         Transaction tx = null;
         Apartment apartment = null;
@@ -230,14 +207,14 @@ public class AirBdbServiceImpl implements AirBdbService {
     }
 
     /* returns an user given an id, null otherwise*/
-    private User getUserById(long userId) {
+    public User  getUserById(Long id){
         Session session = repository.sessionFactory.openSession();
         Transaction tx = null;
         User user = null;
 
         try {
             tx = session.beginTransaction();
-            user = (User) session.get(User.class, userId);
+            user = (User) session.get(User.class, id);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -247,6 +224,29 @@ public class AirBdbServiceImpl implements AirBdbService {
         }
 
         return user;
+    }
+
+    /* saves a new reservation and returns it */
+    public Reservation createReservation(long apartmentId, long userId, Date from, Date to){
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        Reservation reservation = null;
+        Apartment apartment = this.getApartmentById(apartmentId);
+        User user = getUserById(userId);
+
+        try {
+            tx = session.beginTransaction();
+            reservation = new Reservation(from, to, apartment, user);
+            session.save(reservation);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return reservation;
     }
 
 
