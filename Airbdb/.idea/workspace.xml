@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AirBdbServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AirBdbServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="584">
+              <caret line="230" selection-start-line="230" selection-end-line="230" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AirBdbServiceTestCase.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AirBdbServiceTestCase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="72" column="35" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="35" />
+            <state relative-caret-position="285">
+              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -109,8 +109,8 @@
       <file leaf-file-name="AirBdbService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
-              <caret line="35" column="117" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="117" />
+            <state relative-caret-position="106">
+              <caret line="87" column="14" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -130,8 +130,8 @@
       <find>get(0</find>
       <find>get(0)</find>
       <find>createRe</find>
-      <find>getuser</find>
       <find>getuserbyi</find>
+      <find>getuser</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -501,12 +501,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.04.11 at 01h 01m 50s.xml">
-      <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.04.11 at 01h 03m 51s.xml">
-      <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.04.11 at 01h 06m 17s.xml">
       <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
     </history-entry>
@@ -531,6 +525,12 @@
     <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.04.11 at 01h 20m 41s.xml">
       <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.04.11 at 01h 22m 56s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.04.11 at 01h 28m 24s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -545,7 +545,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5011547" side_tool="true" weight="0.32913387" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49884528" weight="0.77322835" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49884528" weight="0.6566929" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="3" />
@@ -865,13 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="35" column="117" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/Reservation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -903,13 +896,6 @@
             <element signature="e#1748#1749#0" expanded="true" />
             <element signature="e#1766#1767#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="72" column="35" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -954,13 +940,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="87" column="14" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="584">
+          <caret line="230" selection-start-line="230" selection-end-line="230" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
         </state>
       </provider>
     </entry>

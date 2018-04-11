@@ -19,26 +19,6 @@ public class AirBdbServiceImpl implements AirBdbService {
         this.repository = repository;
     }
 
-    /* returns an user given an id, null otherwise*/
-    private User getUserById(long userId) {
-        Session session = repository.sessionFactory.openSession();
-        Transaction tx = null;
-        User user = null;
-
-        try {
-            tx = session.beginTransaction();
-            user = (User) session.get(User.class, userId);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        return user;
-    }
-
     /* saves a new user and returns it */
     public User createUser(String username, String name){
         Session session = repository.sessionFactory.openSession();
@@ -248,6 +228,27 @@ public class AirBdbServiceImpl implements AirBdbService {
 
         return apartment;
     }
+
+    /* returns an user given an id, null otherwise*/
+    private User getUserById(long userId) {
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        User user = null;
+
+        try {
+            tx = session.beginTransaction();
+            user = (User) session.get(User.class, userId);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return user;
+    }
+
 
 
 }
