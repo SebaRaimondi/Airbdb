@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,6 +17,26 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     public AirBdbServiceImpl(AirBdbRepository repository) {
         this.repository = repository;
+    }
+
+    /* returns an user given an id, null otherwise*/
+    private User getUserById(long userId) {
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        User user = null;
+
+        try {
+            tx = session.beginTransaction();
+            user = (User) session.get(User.class, userId);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return user;
     }
 
     /* saves a new user and returns it */
@@ -50,7 +71,7 @@ public class AirBdbServiceImpl implements AirBdbService {
             TypedQuery<User> query =
                     session.createQuery("SELECT u FROM User u WHERE u.username = :email", User.class);
             List<User> results = query.setParameter("email", email).getResultList();
-            us = results.get(0);
+            us = results.isEmpty() ? null : results.get(0);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -145,7 +166,7 @@ public class AirBdbServiceImpl implements AirBdbService {
             TypedQuery<Property> query =
                     session.createQuery("SELECT p FROM Property p WHERE p.name = :name", Property.class);
             List<Property> results = query.setParameter("name", name).getResultList();
-            property = results.get(0);
+            property = results.isEmpty() ? null : results.get(0);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -184,6 +205,50 @@ public class AirBdbServiceImpl implements AirBdbService {
 
         return room;
     }
+
+    /* saves a new reservation and returns it */
+    public Reservation createReservation(long apartmentId, long userId, Date from, Date to){
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        Reservation reservation = null;
+        Apartment apartment = this.getApartmentById(apartmentId);
+        User user = this.getUserById(userId);
+
+        try {
+            tx = session.beginTransaction();
+            reservation = new Reservation(from, to, apartment, user);
+            session.save(reservation);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return reservation;
+    }
+
+    /* returns an apartment given an id, null otherwise*/
+    private Apartment getApartmentById(long apartmentId) {
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        Apartment apartment = null;
+
+        try {
+            tx = session.beginTransaction();
+            apartment = (Apartment) session.get(Apartment.class, apartmentId);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return apartment;
+    }
+
 
 }
 

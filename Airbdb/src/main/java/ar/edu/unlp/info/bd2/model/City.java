@@ -15,7 +15,7 @@ public class City {
     @Column(name="name", nullable=false)
     private String name;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "city")
     private List<Property> properties;
 
     public City(){}

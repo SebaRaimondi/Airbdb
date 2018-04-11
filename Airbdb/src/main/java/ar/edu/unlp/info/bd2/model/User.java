@@ -1,6 +1,9 @@
 package ar.edu.unlp.info.bd2.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="users")
@@ -16,11 +19,16 @@ public class User {
     @Column(name="userId")
     private Long id;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private List<Reservation> reservations;
+
+
     public User() {}
 
     public User(String username, String name) {
         this.username = username;
         this.name = name;
+        this.reservations = new ArrayList();
     }
 
     public Long getId() {
@@ -45,5 +53,40 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", id=" + id +
+                ", reservations=" + reservations +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getName(), user.getName()) &&
+                Objects.equals(getId(), user.getId()) &&
+                reservations.containsAll(user.reservations) && user.reservations.containsAll(reservations);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getUsername(), getName(), getId(), getReservations());
     }
 }
