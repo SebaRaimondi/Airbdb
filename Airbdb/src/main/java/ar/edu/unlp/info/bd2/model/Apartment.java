@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="apartments")
 public class Apartment extends Property{
 
     private int rooms;
