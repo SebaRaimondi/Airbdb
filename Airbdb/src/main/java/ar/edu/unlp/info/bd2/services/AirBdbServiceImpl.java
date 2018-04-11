@@ -39,7 +39,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         return user;
     }
 
-    /* returns an user by email */
+    /* returns an user by a given email, null otherwise */
     public User getUserByUsername(String email) {
         Session session = repository.sessionFactory.openSession();
         Transaction tx = null;

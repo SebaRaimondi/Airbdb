@@ -1,6 +1,5 @@
 package ar.edu.unlp.info.bd2.model;
 
-/* for annotations */
 import javax.persistence.*;
 
 @Entity
@@ -22,15 +21,6 @@ public class User {
     public User(String username, String name) {
         this.username = username;
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", id=" + id +
-                '}';
     }
 
     public Long getId() {
