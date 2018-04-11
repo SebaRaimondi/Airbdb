@@ -13,5 +13,4 @@
 
 * Que onda, si creo un apartment en una ciudad, deberia checkear que esa ciudad exista y sino dar error o bien cargarla en ese momento?
 
-* Ayuda quiero ejecutar otro test de unidad y no ignora los 24 warnigs y 6 errores que si los deja pasar al testear createUser().
 
