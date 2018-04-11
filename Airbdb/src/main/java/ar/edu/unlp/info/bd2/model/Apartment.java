@@ -9,6 +9,8 @@ public class Apartment extends Property{
     @Column(nullable=false)
     private int rooms;
 
+    public Apartment(){}
+
     public Apartment(String name, String description, double price, int capacity, int rooms, City city) {
         super(name, description, price, capacity, city);
         this.rooms = rooms;

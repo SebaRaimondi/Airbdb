@@ -11,6 +11,8 @@ public class PrivateRoom extends Property{
 
     private int beds;
 
+    public PrivateRoom(){};
+
     public PrivateRoom(String name, String description, double price, int capacity, int beds, City city) {
         super(name, description, price, capacity, city);
         this.beds = beds;

@@ -54,7 +54,7 @@ public class AirBdbServiceTestCase {
 
   @Test
   public void testRentProperty() throws ParseException, ReservationException {
-    Apartment apartment = this.service.createAparment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2, 2, "La Plata");
+    Apartment apartment = this.service.createApartment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2, 2, "La Plata");
     User user = this.service.createUser("user@email.com", "user");
 
     Assert.assertEquals(0, user.getReservations().size());
@@ -76,7 +76,7 @@ public class AirBdbServiceTestCase {
 
   @Test
   public void testRentPropertyCollision() throws ParseException, ReservationException {
-    Property property = this.service.createAparment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2,2, "La Plata" );
+    Property property = this.service.createApartment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2,2, "La Plata" );
     User user = this.service.createUser("user@email.com", "user");
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -92,7 +92,7 @@ public class AirBdbServiceTestCase {
 
   @Test
   public void testIsPropertyAvailable() throws ParseException, ReservationException {
-    Property property = this.service.createAparment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2,2, "La Plata" );
+    Property property = this.service.createApartment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2,2, "La Plata" );
     User user = this.service.createUser("user@email.com", "user");
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -115,7 +115,7 @@ public class AirBdbServiceTestCase {
   @Test
   public void testRateReservation() throws ParseException, ReservationException, RateException {
     boolean exceptionThrown = false;
-    Property property = this.service.createAparment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2,2, "La Plata" );
+    Property property = this.service.createApartment("Apartment with 2 Rooms", "Cozy Apartment close to City Center", 45.0, 2,2, "La Plata" );
     User user = this.service.createUser("user@email.com", "user");
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

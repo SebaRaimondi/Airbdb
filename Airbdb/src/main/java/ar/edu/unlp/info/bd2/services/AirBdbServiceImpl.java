@@ -62,6 +62,101 @@ public class AirBdbServiceImpl implements AirBdbService {
         return us;
     }
 
+    /* saves a new city and returns it */
+    public City createCity(String name){
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        City city = null;
+
+        try {
+            tx = session.beginTransaction();
+            city = new City(name);
+            session.save(city);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return city;
+    }
+
+    /* returns a city given a name. can return null */
+    public City getCityByName(String name){
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        City city = null;
+
+        try {
+            tx = session.beginTransaction();
+            TypedQuery<City> query =
+                    session.createQuery("SELECT c FROM City c WHERE c.name = :name", City.class);
+            List<City> results = query.setParameter("name", name).getResultList();
+            city = results.isEmpty() ? null : results.get(0);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return city;
+    }
+
+    /* saves a new apartment and returns it */
+    public Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName){
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        Apartment apartment = null;
+        City city = this.getCityByName(cityName);
+
+        /* so that you can add an apartment in a city that isnt uploaded yet */
+        /* we create the city */
+        if (city == null) {
+           city = this.createCity(cityName);
+        }
+
+        try {
+            tx = session.beginTransaction();
+            apartment = new Apartment(name, description, price, capacity, rooms, city);
+            session.save(apartment);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return apartment;
+    }
+
+    /* returns a property by a given name, null otherwise */
+    public Property getPropertyByName(String name) {
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        Property property = null;
+
+        try {
+            tx = session.beginTransaction();
+            TypedQuery<Property> query =
+                    session.createQuery("SELECT p FROM Property p WHERE p.name = :name", Property.class);
+            List<Property> results = query.setParameter("name", name).getResultList();
+            property = results.get(0);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return property;
+    }
+
 
 }
 
