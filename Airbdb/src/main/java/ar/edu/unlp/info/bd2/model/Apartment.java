@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name="apartments")
 public class Apartment extends Property{
 
-    @Column(nullable=false)
     private int rooms;
 
     public Apartment(){}

@@ -157,6 +157,33 @@ public class AirBdbServiceImpl implements AirBdbService {
         return property;
     }
 
+    /* saves a new room and returns it */
+    public PrivateRoom createRoom(String name, String description, double price, int capacity, int beds, String cityName){
+        Session session = repository.sessionFactory.openSession();
+        Transaction tx = null;
+        PrivateRoom room = null;
+        City city = this.getCityByName(cityName);
+
+        /* so that you can add an room in a city that isnt uploaded yet */
+        /* we create the city */
+        if (city == null) {
+            city = this.createCity(cityName);
+        }
+
+        try {
+            tx = session.beginTransaction();
+            room = new PrivateRoom(name, description, price, capacity, beds, city);
+            session.save(room);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return room;
+    }
 
 }
 
