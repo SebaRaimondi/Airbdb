@@ -23,15 +23,17 @@ public class Property {
     private int capacity;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn()
-    private City cityId;
+    @JoinColumn(name="cityId")
+    private City city;
 
-    public Property(String name, String description, double price, int capacity, City cityId) {
+    public Property(){};
+
+    public Property(String name, String description, double price, int capacity, City city) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.capacity = capacity;
-        this.cityId = cityId;
+        this.city = city;
     }
 
     public Long getId() {
@@ -75,10 +77,10 @@ public class Property {
     }
 
     public City getCityId() {
-        return cityId;
+        return city;
     }
 
-    public void setCityId(City cityId) {
-        this.cityId = cityId;
+    public void setCityId(City city) {
+        this.city = city;
     }
 }
