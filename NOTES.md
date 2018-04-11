@@ -13,4 +13,4 @@
 
 * Que onda, si creo un apartment en una ciudad, deberia checkear que esa ciudad exista y sino dar error o bien cargarla en ese momento?
 
-
+* Esta bien eso de no poner la annotation @Column sobre beds y rooms y tipo que se cargue toda la info en una tabla Properties pero no en Apartments ni Rooms? (se crean esas tablas tambien)
