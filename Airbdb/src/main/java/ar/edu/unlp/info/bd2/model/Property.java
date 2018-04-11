@@ -10,5 +10,17 @@ public class Property {
     @Column(name="propertyId")
     private Long id;
 
+    @Column(nullable=false)
+    private String name;
+
+    @Column(nullable=false)
+    private String description;
+
+    @Column(nullable=false)
+    private double price;
+
+    @Column(nullable=false)
+    private int capacity;
+
 
 }

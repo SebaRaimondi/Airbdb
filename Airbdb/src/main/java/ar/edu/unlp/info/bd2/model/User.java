@@ -8,7 +8,7 @@ public class User {
     @Column(name="username",unique=true, nullable=false)
     private String username;
 
-    @Column(name="name", nullable=false)
+    @Column(nullable=false)
     private String name;
 
     @Id
