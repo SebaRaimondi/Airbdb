@@ -1,21 +1,35 @@
 package ar.edu.unlp.info.bd2.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name="cities")
 public class City {
-    @Column(name="name", nullable=false)
-    private String name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cityId")
     private Long id;
 
+    @Column(name="name", nullable=false)
+    private String name;
+
+    @OneToMany(mappedBy = "cityId")
+    private List<Property> properties;
+
+    public City(){}
+
     public City(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -26,11 +40,11 @@ public class City {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public List<Property> getProperties() {
+        return properties;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 }
