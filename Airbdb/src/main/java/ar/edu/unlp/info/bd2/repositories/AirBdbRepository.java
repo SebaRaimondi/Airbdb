@@ -179,12 +179,12 @@ public class AirBdbRepository {
   }
 
 
-  /* if */
+  /* returns true if a reservation for an apartment can be made in a period, false otherway */
   public boolean isPropertyAvailable(Long id, Date from, Date to, Session session) {
     List<Reservation> results = null;
 
     TypedQuery<Reservation> query =
-            session.createQuery("SELECT r FROM Reservation r WHERE r.apartment = :apartmentId AND r.from = :from AND r.to = :to ", Reservation.class);
+            session.createQuery("SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) ", Reservation.class);
     query.setParameter("apartmentId", id);
     query.setParameter("from", from);
     query.setParameter("to", to);
@@ -192,6 +192,46 @@ public class AirBdbRepository {
 
     return results.isEmpty();
 
+  }
+
+
+  /* returns true if a reservation for an apartment can be made in a period, false otherway */
+  public boolean isPropertyAvailable(Long id, Date from, Date to) {
+    Session session = sessionFactory.openSession();
+    Transaction tx = null;
+    List<Reservation> results = null;
+
+    TypedQuery<Reservation> query =
+            session.createQuery("SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) ", Reservation.class);
+    query.setParameter("apartmentId", id);
+    query.setParameter("from", from);
+    query.setParameter("to", to);
+    results = query.getResultList();
+
+    return results.isEmpty();
+
+  }
+
+
+  /* returns an existing user by id, null otherwise */
+  public User getUserById(Long id) {
+    Session session = sessionFactory.openSession();
+    Transaction tx = null;
+    User user;
+
+    try {
+      tx = session.beginTransaction();
+      TypedQuery<User> query = session.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class);
+      user = query.setParameter("id", id).getSingleResult();
+      tx.commit();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    } finally {
+      session.close();
+    }
+
+    return user;
   }
 
 

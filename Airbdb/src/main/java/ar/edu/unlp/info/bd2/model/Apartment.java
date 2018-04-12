@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Apartment extends Property{
 
+    @Column
     private int rooms;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "apartment")

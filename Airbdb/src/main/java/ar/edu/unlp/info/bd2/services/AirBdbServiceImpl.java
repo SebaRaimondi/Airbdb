@@ -59,9 +59,20 @@ public class AirBdbServiceImpl implements AirBdbService {
         }
         catch (ReservationException e) {
             e.printStackTrace();
+            throw e;
         }
 
         return reservation;
     }
 
+
+    /* returns an user by a given id, null otherwise */
+    public User getUserById(Long id) {
+        return repository.getUserById(id);
+    }
+
+    /* returns an user by a given id, null otherwise */
+    public boolean isPropertyAvailable(Long id, Date from, Date to){
+        return repository.isPropertyAvailable(id, from, to);
+    }
 }

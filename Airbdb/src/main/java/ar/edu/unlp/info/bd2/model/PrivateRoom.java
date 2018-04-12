@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 public class PrivateRoom extends Property{
-
+    @Column
     private int beds;
 
     public PrivateRoom(){};

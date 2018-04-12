@@ -18,3 +18,5 @@
 * Preguntar que onda si se hace rollback sobre crear user ponele y devuelvo el objeto usuario como si se guardo pero no ... debo encerrar la llamanda al saveUser(user) en un try catch y en el catch de ese metodo por si se levanta hibernateexception volver a tirarla?
 
 * El tema de darme cuenta si no existe una ciudad al crear aprtment ... crearla etc todo dentro de una misma tx !!! super metodo.
+
+* Check is property available modularizado debo pasarle session ... que onda cuando se pide impl en airdbserviceimpl
