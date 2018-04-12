@@ -68,14 +68,7 @@ public class AirBdbRepository {
     try {
       tx = session.beginTransaction();
 
-      TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :name", City.class);
-      List<City> results = query.setParameter("name", name).getResultList();
-      city = results.isEmpty() ? null : results.get(0);
-      if (city == null) {
-        city = new City(cityName);
-        session.save(city);
-      }
-
+      city = this.manageCity(cityName, session);
       apartment = new Apartment(name, description, price, capacity, rooms, city);
       session.save(apartment);
 
@@ -91,6 +84,23 @@ public class AirBdbRepository {
   }
 
 
+  /* returns an existing city by name, or creates a new one and returns it */
+  private City manageCity(String name, Session session){
+    City city = null;
+
+    TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :name", City.class);
+    List<City> results = query.setParameter("name", name).getResultList();
+    city = results.isEmpty() ? null : results.get(0);
+
+    if (city == null) {
+      city = new City(name);
+      session.save(city);
+    }
+
+    return city;
+  }
+
+
   /* saves a new room and returns it */
   public PrivateRoom saveRoom(String name, String description, double price, int capacity, int beds, String cityName) {
     Session session = sessionFactory.openSession();
@@ -101,14 +111,7 @@ public class AirBdbRepository {
     try {
       tx = session.beginTransaction();
 
-      TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :name", City.class);
-      List<City> results = query.setParameter("name", name).getResultList();
-      city = results.isEmpty() ? null : results.get(0);
-      if (city == null) {
-        city = new City(cityName);
-        session.save(city);
-      }
-
+      city = this.manageCity(cityName, session);
       room = new PrivateRoom(name, description, price, capacity, beds, city);
       session.save(room);
 
