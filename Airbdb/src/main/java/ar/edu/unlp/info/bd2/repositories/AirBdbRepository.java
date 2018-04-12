@@ -1,10 +1,7 @@
 package ar.edu.unlp.info.bd2.repositories;
 
 import ar.edu.unlp.info.bd2.model.*;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.TypedQuery;
@@ -17,15 +14,20 @@ public class AirBdbRepository {
   SessionFactory sessionFactory;
 
   /* saves a new user and returns it */
-  public User saveUser(User user) {
+  public User saveUser(String username, String name){
     Session session = sessionFactory.openSession();
     Transaction tx = null;
+    User user = null;
+    /* saves all usernames in lower case */
+    username = username.toLowerCase();
 
     try {
       tx = session.beginTransaction();
+      if (! this.uniqueUsername(username, session)){ throw new UsernameException();}
+      user = new User(username, name);
       session.save(user);
       tx.commit();
-    } catch (HibernateException e) {
+    } catch (Exception e) {
       if (tx != null) tx.rollback();
       e.printStackTrace();
     } finally {
@@ -36,11 +38,24 @@ public class AirBdbRepository {
   }
 
 
+  /* returns true if a given username isnt used yet  */
+  private boolean uniqueUsername(String username, Session session){
+    List<User> results = null;
+    TypedQuery<User> query =
+            session.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
+    query.setParameter("username", username);
+    results = query.getResultList();
+
+    return results.isEmpty();
+  }
+
+
   /* returns an existing user by email, null otherwise */
   public User getUserByUsername(String email) {
     Session session = sessionFactory.openSession();
     Transaction tx = null;
     User user;
+    email = email.toLowerCase();
 
     try {
       tx = session.beginTransaction();
@@ -64,6 +79,8 @@ public class AirBdbRepository {
     Transaction tx = null;
     City city;
     Apartment apartment = null;
+    /* all city names are stored in upper case */
+    cityName = cityName.toUpperCase();
 
     try {
       tx = session.beginTransaction();
@@ -85,17 +102,37 @@ public class AirBdbRepository {
 
 
   /* returns an existing city by name, or creates a new one and returns it */
-  private City manageCity(String name, Session session){
+  private City manageCity(String cityName, Session session){
     City city = null;
 
-    TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :name", City.class);
-    List<City> results = query.setParameter("name", name).getResultList();
-    city = results.isEmpty() ? null : results.get(0);
+    city = this.findCityByName(cityName, session);
 
     if (city == null) {
-      city = new City(name);
-      session.save(city);
+      city = this.createCity(cityName, session);
     }
+
+    return city;
+  }
+
+
+  /* searchs for a city given a name */
+  private City findCityByName(String cityName, Session session){
+    City city = null;
+
+    TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :cityName", City.class);
+    List<City> results = query.setParameter("cityName", cityName).getResultList();
+    city = results.isEmpty() ? null : results.get(0);
+
+    return city;
+  }
+
+
+  /* creates a city given a name */
+  private City createCity(String cityName, Session session){
+    City city = null;
+
+    city = new City(cityName);
+    session.save(city);
 
     return city;
   }

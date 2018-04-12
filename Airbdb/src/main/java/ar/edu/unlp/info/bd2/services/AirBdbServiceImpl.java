@@ -21,8 +21,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     /* creates a new user and returns it */
     public User createUser(String username, String name){
-        User user = new User(username, name);
-        return repository.saveUser(user);
+        return repository.saveUser(username, name);
     }
 
 

@@ -13,6 +13,7 @@
 * Check se respeta repository pattern
 
 	-> Check caso 'is property available' modularizado debo pasarle session ... que onda cuando se pide impl en airdbserviceimpl
+	-> ver ejemplo de managecity findcity y create, que pasa si se quieren hacer estos servicios en airbdbimpl? tengo que hacer otro metodo igual sin el param session? .... no esta tan buena la modularizacion.
 
 * Check restricciones del modelo del tipo ... 'Cuando creas una ciudad checkear no haya otra con igual nombre (case insensitive)'
 
