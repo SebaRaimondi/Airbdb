@@ -6,9 +6,9 @@
 	2. run -> edit configurations -> application -> airbdbserviceimpl -> before launch -> remove 'build' and add 'build no error check'
 	3. run -> edit configurations -> JUnit -> airbdbservicetestcase -> before launch -> remove 'build' and add 'build no error check'	
 
-## TAREAS:
-
 * Usar __usuario bd2_grupo2 para admin la db bd2_grupo2, con password 'topsecret'__.
+
+## TAREAS:
 
 * Check se respeta repository pattern
 
