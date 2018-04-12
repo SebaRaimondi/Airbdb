@@ -8,23 +8,23 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="propertyId")
-    private Long id;
+    protected Long id;
 
     @Column(nullable=false, unique = true)
-    private String name;
+    protected String name;
 
     @Column(nullable=false)
-    private String description;
+    protected String description;
 
     @Column(nullable=false)
-    private double price;
+    protected double price;
 
     @Column(nullable=false)
-    private int capacity;
+    protected int capacity;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cityId")
-    private City city;
+    protected City city;
 
     public Property(){};
 

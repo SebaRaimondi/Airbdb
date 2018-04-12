@@ -7,10 +7,14 @@
 	3. run -> edit configurations -> JUnit -> airbdbservicetestcase -> before launch -> remove 'build' and add 'build no error check'	
 
 
-* Usar usuario bd2-grupo2 (guion bajo) para admin la db bd2-grupo2 (guion bajo), con password 'topsecret'.
+* Usar usuario __bd2_grupo2 para admin la db bd2_grupo2__, con password 'topsecret'.
 
-* Cambie @Autowired private SessionFactory sessionFactory en AirBdRepository a @Autowired **public** SessionFactory sessionFactory para acceder a la sessionFactory desde AirBdServiceImpl a traves de la variable de instancia _repository_ de la forma `this.repository.sessionFactory` y asi tener una unidad de trabajo para hacer x transaccion.
+* Cambiar todo respetando repository pattern
 
-* Que onda, si creo un apartment en una ciudad, deberia checkear que esa ciudad exista y sino dar error o bien cargarla en ese momento?
+* Cuando creas una ciudad checkear no haya otra con igual nombre (case insensitive)
 
-* Esta bien eso de no poner la annotation @Column sobre beds y rooms y tipo que se cargue toda la info en una tabla Properties pero no en Apartments ni Rooms? (se crean esas tablas tambien)
+* Chequear hirarchy property apartment room
+
+* Preguntar que onda si se hace rollback sobre crear user ponele y devuelvo el objeto usuario como si se guardo pero no ... debo encerrar la llamanda al saveUser(user) en un try catch y en el catch de ese metodo por si se levanta hibernateexception volver a tirarla?
+
+* El tema de darme cuenta si no existe una ciudad al crear aprtment ... crearla etc todo dentro de una misma tx !!! super metodo.

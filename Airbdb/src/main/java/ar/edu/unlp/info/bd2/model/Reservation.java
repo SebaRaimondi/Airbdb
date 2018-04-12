@@ -86,4 +86,6 @@ public class Reservation {
     public Apartment getProperty(){
         return this.getApartment();
     }
+
+
 }
