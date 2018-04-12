@@ -14,7 +14,7 @@ public class AirBdbRepository {
   SessionFactory sessionFactory;
 
   /* saves a new user and returns it */
-  public User saveUser(String username, String name){
+  public User createUser(String username, String name){
     Session session = sessionFactory.openSession();
     Transaction tx = null;
     User user = null;
@@ -74,7 +74,7 @@ public class AirBdbRepository {
 
 
   /* saves a new apartment and returns it */
-  public Apartment saveApartment(String name, String description, double price, int capacity, int rooms, String cityName) {
+  public Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName) {
     Session session = sessionFactory.openSession();
     Transaction tx = null;
     City city;
@@ -90,10 +90,12 @@ public class AirBdbRepository {
       session.save(apartment);
 
       tx.commit();
-    } catch (HibernateException e) {
+    }
+    catch (Exception e) {
       if (tx != null) tx.rollback();
       e.printStackTrace();
-    } finally {
+    }
+    finally {
       session.close();
     }
 
@@ -103,7 +105,7 @@ public class AirBdbRepository {
 
   /* returns an existing city by name, or creates a new one and returns it */
   private City manageCity(String cityName, Session session){
-    City city = null;
+    City city;
 
     city = this.findCityByName(cityName, session);
 
@@ -120,8 +122,8 @@ public class AirBdbRepository {
     City city = null;
 
     TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :cityName", City.class);
-    List<City> results = query.setParameter("cityName", cityName).getResultList();
-    city = results.isEmpty() ? null : results.get(0);
+    List<City> resultList = query.setParameter("cityName", cityName).getResultList();
+    city = resultList.isEmpty() ? null : resultList.get(0);
 
     return city;
   }
@@ -129,7 +131,7 @@ public class AirBdbRepository {
 
   /* creates a city given a name */
   private City createCity(String cityName, Session session){
-    City city = null;
+    City city;
 
     city = new City(cityName);
     session.save(city);
@@ -139,7 +141,7 @@ public class AirBdbRepository {
 
 
   /* saves a new room and returns it */
-  public PrivateRoom saveRoom(String name, String description, double price, int capacity, int beds, String cityName) {
+  public PrivateRoom createRoom(String name, String description, double price, int capacity, int beds, String cityName) {
     Session session = sessionFactory.openSession();
     Transaction tx = null;
     City city;
@@ -153,10 +155,12 @@ public class AirBdbRepository {
       session.save(room);
 
       tx.commit();
-    } catch (HibernateException e) {
+    }
+    catch (Exception e) {
       if (tx != null) tx.rollback();
       e.printStackTrace();
-    } finally {
+    }
+    finally {
       session.close();
     }
 
@@ -175,10 +179,12 @@ public class AirBdbRepository {
       TypedQuery<Property> query = session.createQuery("SELECT p FROM Property p WHERE p.name = :name", Property.class);
       property = query.setParameter("name", name).getSingleResult();
       tx.commit();
-    } catch (Exception e) {
+    }
+    catch (Exception e) {
       e.printStackTrace();
       return null;
-    } finally {
+    }
+    finally {
       session.close();
     }
 
@@ -186,7 +192,7 @@ public class AirBdbRepository {
   }
 
   /* saves a new reservation and returns it */
-  public Reservation saveReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException{
+  public Reservation createReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException{
     Session session = sessionFactory.openSession();
     Transaction tx = null;
     Reservation reservation = null;

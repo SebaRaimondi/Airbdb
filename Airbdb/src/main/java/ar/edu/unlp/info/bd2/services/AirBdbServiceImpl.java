@@ -21,7 +21,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     /* creates a new user and returns it */
     public User createUser(String username, String name){
-        return repository.saveUser(username, name);
+        return repository.createUser(username, name);
     }
 
 
@@ -33,7 +33,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     /* creates a new apartment and returns it */
     public Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName){
-       return repository.saveApartment(name, description, price, capacity, rooms, cityName);
+       return repository.createApartment(name, description, price, capacity, rooms, cityName);
     }
 
 
@@ -45,7 +45,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     /* creates a new room and returns it */
     public PrivateRoom createRoom(String name, String description, double price, int capacity, int beds, String cityName){
-        return repository.saveRoom(name, description, price, capacity, beds, cityName);
+        return repository.createRoom(name, description, price, capacity, beds, cityName);
     }
 
 
@@ -54,7 +54,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         Reservation reservation = null;
 
         try {
-            reservation = repository.saveReservation(apartmentId, userId, from, to);
+            reservation = repository.createReservation(apartmentId, userId, from, to);
         }
         catch (ReservationException e) {
             e.printStackTrace();
