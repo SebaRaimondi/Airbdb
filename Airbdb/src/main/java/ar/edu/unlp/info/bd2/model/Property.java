@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="properties")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

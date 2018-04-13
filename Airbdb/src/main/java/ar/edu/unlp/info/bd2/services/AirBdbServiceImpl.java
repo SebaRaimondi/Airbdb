@@ -2,14 +2,9 @@ package ar.edu.unlp.info.bd2.services;
 
 import ar.edu.unlp.info.bd2.model.*;
 import ar.edu.unlp.info.bd2.repositories.AirBdbRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import javax.persistence.TypedQuery;
 import java.util.Date;
-import java.util.List;
 
 
 public class AirBdbServiceImpl implements AirBdbService {
@@ -19,14 +14,20 @@ public class AirBdbServiceImpl implements AirBdbService {
         this.repository = repository;
     }
 
-    /* creates a new user and returns it */
+    @Transactional
+    /* creates a new user and returns it. throws UsernameException if the chosen username is already taken */
     public User createUser(String username, String name){
-        return repository.createUser(username, name);
+        username = username.toLowerCase();
+        /* si uso exception poner en la firma del metodo throws UsernameException en esta clase y en la interfaz */
+       /* if (! this.repository.uniqueUsername(username)) throw new UsernameException(); */
+        User user = new User (username, name);
+        return repository.storeUser(user);
     }
 
 
     /* returns an user by a given email, null otherwise */
     public User getUserByUsername(String email) {
+        email = email.toLowerCase();
         return repository.getUserByUsername(email);
     }
 

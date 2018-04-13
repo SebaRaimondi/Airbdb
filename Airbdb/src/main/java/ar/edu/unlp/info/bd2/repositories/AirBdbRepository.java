@@ -14,61 +14,30 @@ public class AirBdbRepository {
   SessionFactory sessionFactory;
 
   /* saves a new user and returns it */
-  public User createUser(String username, String name){
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    User user = null;
-    /* saves all usernames in lower case */
-    username = username.toLowerCase();
-
-    try {
-      tx = session.beginTransaction();
-      if (! this.uniqueUsername(username, session)){ throw new UsernameException();}
-      user = new User(username, name);
-      session.save(user);
-      tx.commit();
-    } catch (Exception e) {
-      if (tx != null) tx.rollback();
-      e.printStackTrace();
-    } finally {
-      session.close();
-    }
-
+  public User storeUser(User user){
+    sessionFactory.getCurrentSession().save(user);
     return user;
   }
 
 
   /* returns true if a given username isnt used yet  */
-  private boolean uniqueUsername(String username, Session session){
-    List<User> results = null;
-    TypedQuery<User> query =
-            session.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
+  public boolean uniqueUsername(String username){
+    String sql = "SELECT u FROM User u WHERE u.username = :username";
+    Session session = sessionFactory.getCurrentSession();
+    TypedQuery<User> query = session.createQuery(sql, User.class);
     query.setParameter("username", username);
-    results = query.getResultList();
-
+    List<User> results = query.getResultList();
     return results.isEmpty();
   }
 
 
   /* returns an existing user by email, null otherwise */
   public User getUserByUsername(String email) {
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    User user;
-    email = email.toLowerCase();
-
-    try {
-      tx = session.beginTransaction();
-      TypedQuery<User> query = session.createQuery("SELECT u FROM User u WHERE u.username = :email", User.class);
-      user = query.setParameter("email", email).getSingleResult();
-      tx.commit();
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
-    } finally {
-      session.close();
-    }
-
+    String sql = "SELECT u FROM User u WHERE u.username = :email";
+    Session session = sessionFactory.getCurrentSession();
+    TypedQuery<User> query = session.createQuery(sql, User.class);
+    List<User> result = query.setParameter("email", email).getResultList();
+    User user = result.isEmpty() ? null : result.get(0);
     return user;
   }
 
