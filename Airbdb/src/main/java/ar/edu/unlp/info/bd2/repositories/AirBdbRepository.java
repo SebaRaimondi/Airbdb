@@ -2,6 +2,7 @@ package ar.edu.unlp.info.bd2.repositories;
 
 import ar.edu.unlp.info.bd2.model.*;
 import org.hibernate.*;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.TypedQuery;
@@ -36,128 +37,49 @@ public class AirBdbRepository {
     String sql = "SELECT u FROM User u WHERE u.username = :email";
     Session session = sessionFactory.getCurrentSession();
     TypedQuery<User> query = session.createQuery(sql, User.class);
-    List<User> result = query.setParameter("email", email).getResultList();
-    User user = result.isEmpty() ? null : result.get(0);
-    return user;
+    query.setParameter("email", email);
+    return ((Query<User>) query).uniqueResult();
   }
 
 
   /* saves a new apartment and returns it */
-  public Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName) {
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    City city;
-    Apartment apartment = null;
-    /* all city names are stored in upper case */
-    cityName = cityName.toUpperCase();
-
-    try {
-      tx = session.beginTransaction();
-
-      city = this.manageCity(cityName, session);
-      apartment = new Apartment(name, description, price, capacity, rooms, city);
-      session.save(apartment);
-
-      tx.commit();
-    }
-    catch (Exception e) {
-      if (tx != null) tx.rollback();
-      e.printStackTrace();
-    }
-    finally {
-      session.close();
-    }
-
-    return apartment;
+  public Apartment storeApartment(Apartment apartment) {
+      sessionFactory.getCurrentSession().save(apartment);
+      return apartment;
   }
 
 
-  /* returns an existing city by name, or creates a new one and returns it */
-  private City manageCity(String cityName, Session session){
-    City city;
-
-    city = this.findCityByName(cityName, session);
-
-    if (city == null) {
-      city = this.createCity(cityName, session);
-    }
-
-    return city;
-  }
-
-
-  /* searchs for a city given a name */
-  private City findCityByName(String cityName, Session session){
-    City city = null;
-
-    TypedQuery<City> query = session.createQuery("SELECT c FROM City c WHERE c.name = :cityName", City.class);
-    List<City> resultList = query.setParameter("cityName", cityName).getResultList();
-    city = resultList.isEmpty() ? null : resultList.get(0);
-
-    return city;
+  /* searchs for a city given a name. returns it or null if the city doesn exist */
+  public City findCityByName(String cityName){
+    Session session = sessionFactory.getCurrentSession();
+    String sql = "SELECT c FROM City c WHERE c.name = :cityName";
+    TypedQuery<City> query = session.createQuery(sql, City.class);
+    query.setParameter("cityName", cityName);
+    return ((Query<City>) query).uniqueResult();
   }
 
 
   /* creates a city given a name */
-  private City createCity(String cityName, Session session){
-    City city;
-
-    city = new City(cityName);
-    session.save(city);
-
+  public City storeCity(City city){
+    sessionFactory.getCurrentSession().save(city);
     return city;
   }
 
 
   /* saves a new room and returns it */
-  public PrivateRoom createRoom(String name, String description, double price, int capacity, int beds, String cityName) {
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    City city;
-    PrivateRoom room = null;
-
-    try {
-      tx = session.beginTransaction();
-
-      city = this.manageCity(cityName, session);
-      room = new PrivateRoom(name, description, price, capacity, beds, city);
-      session.save(room);
-
-      tx.commit();
-    }
-    catch (Exception e) {
-      if (tx != null) tx.rollback();
-      e.printStackTrace();
-    }
-    finally {
-      session.close();
-    }
-
+  public PrivateRoom storeRoom(PrivateRoom room) {
+    sessionFactory.getCurrentSession().save(room);
     return room;
   }
 
 
   /* returns a property by a given name, null otherwise */
   public Property getPropertyByName(String name) {
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    Property property = null;
-
-    try {
-      tx = session.beginTransaction();
-      TypedQuery<Property> query = session.createQuery("SELECT p FROM Property p WHERE p.name = :name", Property.class);
-      property = query.setParameter("name", name).getSingleResult();
-      tx.commit();
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-      return null;
-    }
-    finally {
-      session.close();
-    }
-
-    return property;
+    String sql = "SELECT p FROM Property p WHERE p.name = :name";
+    Session session = sessionFactory.getCurrentSession();
+    TypedQuery<Property> query = session.createQuery(sql, Property.class);
+    query.setParameter("name", name);
+    return ((Query<Property>) query).uniqueResult();
   }
 
   /* saves a new reservation and returns it */

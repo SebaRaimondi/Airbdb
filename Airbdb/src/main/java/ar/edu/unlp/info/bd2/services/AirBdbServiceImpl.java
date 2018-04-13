@@ -31,10 +31,17 @@ public class AirBdbServiceImpl implements AirBdbService {
         return repository.getUserByUsername(email);
     }
 
-
+    @Transactional
     /* creates a new apartment and returns it */
     public Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName){
-       return repository.createApartment(name, description, price, capacity, rooms, cityName);
+        cityName = cityName.toUpperCase();
+        City city = repository.findCityByName(cityName);
+        if (city == null){
+            city = new City(cityName);
+            repository.storeCity(city);
+        }
+        Apartment apartment = new Apartment(name, description, price, capacity, rooms, city);
+        return repository.storeApartment(apartment);
     }
 
 
@@ -44,9 +51,17 @@ public class AirBdbServiceImpl implements AirBdbService {
     }
 
 
+    @Transactional
     /* creates a new room and returns it */
     public PrivateRoom createRoom(String name, String description, double price, int capacity, int beds, String cityName){
-        return repository.createRoom(name, description, price, capacity, beds, cityName);
+        cityName = cityName.toUpperCase();
+        City city = repository.findCityByName(cityName);
+        if (city == null){
+            city = new City(cityName);
+            repository.storeCity(city);
+        }
+        PrivateRoom room = new PrivateRoom(name, description, price, capacity, beds, city);
+        return repository.storeRoom(room);
     }
 
 
