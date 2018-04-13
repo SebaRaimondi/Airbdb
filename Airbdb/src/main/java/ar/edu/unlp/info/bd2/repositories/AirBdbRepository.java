@@ -82,91 +82,38 @@ public class AirBdbRepository {
     return ((Query<Property>) query).uniqueResult();
   }
 
+
   /* saves a new reservation and returns it */
-  public Reservation createReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException{
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    Reservation reservation = null;
-
-    try {
-      tx = session.beginTransaction();
-
-      if (! this.isPropertyAvailable(apartmentId, from, to, session) ) throw new ReservationException();
-
-      Apartment apartment = (Apartment) session.get(Apartment.class, apartmentId);
-      User user = (User) session.get(User.class, userId);
-
-      reservation = new Reservation(from, to, apartment, user);
-      session.save(reservation);
-
-      tx.commit();
-    }
-    catch (Exception e) {
-      if (tx!=null) tx.rollback();
-      throw e;
-    }
-    finally {
-      session.close();
-    }
-
+  public Reservation storeReservation(Reservation reservation){
+    sessionFactory.getCurrentSession().save(reservation);
     return reservation;
   }
 
 
   /* returns true if a reservation for an apartment can be made in a period, false otherway */
-  public boolean isPropertyAvailable(Long id, Date from, Date to, Session session) {
-    List<Reservation> results = null;
-
-    TypedQuery<Reservation> query =
-            session.createQuery("SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) ", Reservation.class);
-    query.setParameter("apartmentId", id);
-    query.setParameter("from", from);
-    query.setParameter("to", to);
-    results = query.getResultList();
-
-    return results.isEmpty();
-
-  }
-
-
-  /* returns true if a reservation for an apartment can be made in a period, false otherway */
   public boolean isPropertyAvailable(Long id, Date from, Date to) {
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    List<Reservation> results = null;
-
-    TypedQuery<Reservation> query =
-            session.createQuery("SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) ", Reservation.class);
+    Session session = sessionFactory.getCurrentSession();
+    String sql = "SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) ";
+    TypedQuery<Reservation> query = session.createQuery(sql, Reservation.class);
     query.setParameter("apartmentId", id);
     query.setParameter("from", from);
     query.setParameter("to", to);
-    results = query.getResultList();
-
+    List<Reservation> results = query.getResultList();
     return results.isEmpty();
-
   }
 
 
   /* returns an existing user by id, null otherwise */
   public User getUserById(Long id) {
-    Session session = sessionFactory.openSession();
-    Transaction tx = null;
-    User user;
-
-    try {
-      tx = session.beginTransaction();
-      TypedQuery<User> query = session.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class);
-      user = query.setParameter("id", id).getSingleResult();
-      tx.commit();
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
-    } finally {
-      session.close();
-    }
-
-    return user;
+    return sessionFactory.getCurrentSession().get(User.class, id);
   }
+
+
+  /* returns an existing property by id, null otherwise */
+  public Property getPropertyById(long id) {
+    return sessionFactory.getCurrentSession().get(Property.class, id);
+  }
+
 
 
 

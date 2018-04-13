@@ -17,17 +17,17 @@ public class Reservation {
     @Column(name = "date_to", nullable = false)
     private Date to;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="apartmentId")
     private Apartment apartment;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="userId")
     private User user;
 
     public Reservation(){}
 
-    public Reservation(Date from, Date to, Apartment apartment, User user) {
+    public Reservation(Apartment apartment, User user, Date from, Date to ) {
         this.from = from;
         this.to = to;
         this.apartment = apartment;
