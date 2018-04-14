@@ -104,9 +104,7 @@ public class AirBdbRepository {
 
 
   /* returns an existing user by id, null otherwise */
-  public User getUserById(Long id) {
-    return sessionFactory.getCurrentSession().get(User.class, id);
-  }
+  public User getUserById(Long id) { return sessionFactory.getCurrentSession().get(User.class, id); }
 
 
   /* returns an existing property by id, null otherwise */

@@ -23,7 +23,7 @@ public class Property {
     @Column(nullable=false)
     protected int capacity;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="cityId")
     protected City city;
 

@@ -19,7 +19,7 @@ public class User {
     @Column(name="userId")
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Reservation> reservations;
 
 
@@ -28,7 +28,7 @@ public class User {
     public User(String username, String name) {
         this.username = username;
         this.name = name;
-        this.reservations = new ArrayList();
+        this.reservations = new ArrayList<Reservation>();
     }
 
     public Long getId() {

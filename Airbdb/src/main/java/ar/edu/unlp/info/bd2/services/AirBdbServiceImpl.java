@@ -14,6 +14,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         this.repository = repository;
     }
 
+
     @Transactional
     /* creates a new user and returns it. throws UsernameException if the chosen username is already taken */
     public User createUser(String username, String name){
@@ -30,6 +31,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         email = email.toLowerCase();
         return repository.getUserByUsername(email);
     }
+
 
     @Transactional
     /* creates a new apartment and returns it */

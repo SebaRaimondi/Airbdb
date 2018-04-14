@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class City {
 
     public City(String name) {
         this.name = name;
+        this.properties = new ArrayList<Property>();
     }
 
     public Long getId() {
