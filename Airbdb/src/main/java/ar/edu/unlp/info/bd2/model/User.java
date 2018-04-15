@@ -95,4 +95,8 @@ public class User {
     public void addReservation(Reservation res) {
         this.reservations.add(res);
     }
+
+    public void removeReservation(Reservation res) {
+        this.reservations.remove(res);
+    }
 }

@@ -92,5 +92,8 @@ public class AirBdbServiceImpl implements AirBdbService {
         return repository.getReservationById(id);
     }
 
-
+    @Override
+    public void cancelReservation(Long reservationId) {
+        repository.cancelReservation(reservationId);
+    }
 }

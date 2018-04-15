@@ -116,6 +116,12 @@ public class AirBdbRepository {
     return sessionFactory.getCurrentSession().get(Property.class, id);
   }
 
+  public void cancelReservation(long reservationId) {
+    Reservation res = this.getReservationById(reservationId);
+    sessionFactory.getCurrentSession().remove(this.getPropertyById(reservationId));
+    res.getApartment().removeReservation(res);
+    res.getUser().removeReservation(res);
+  }
 
 
 

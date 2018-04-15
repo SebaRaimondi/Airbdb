@@ -11,7 +11,7 @@ public class Apartment extends Property{
     @Column
     private int rooms;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "apartment")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "apartment", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
     public Apartment(){}
@@ -56,5 +56,9 @@ public class Apartment extends Property{
 
     public void addReservation(Reservation res) {
         this.reservations.add(res);
+    }
+
+    public void removeReservation(Reservation res) {
+        this.reservations.remove(res);
     }
 }

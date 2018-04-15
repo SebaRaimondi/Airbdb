@@ -1,5 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Date;
 
