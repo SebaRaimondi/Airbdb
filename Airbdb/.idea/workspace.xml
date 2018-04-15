@@ -253,7 +253,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AirBdbServiceTestCase">
+  <component name="RunManager" selected="JUnit.AirBdbServiceTestCase.testRentPropertyCollision">
     <configuration default="true" type="Application" factoryName="Application">
       <module name="bd2-2018" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -448,11 +448,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AirBdbServiceTestCase.testRentPropertyCollision" />
         <item itemvalue="JUnit.AirBdbServiceTestCase" />
         <item itemvalue="JUnit.AirBdbServiceTestCase.testCreateUser" />
         <item itemvalue="JUnit.AirBdbServiceTestCase.testIsPropertyAvailable" />
         <item itemvalue="JUnit.AirBdbServiceTestCase.testRentProperty" />
-        <item itemvalue="JUnit.AirBdbServiceTestCase.testRentPropertyCollision" />
       </list>
     </recent_temporary>
   </component>
