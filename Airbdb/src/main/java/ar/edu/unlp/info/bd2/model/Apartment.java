@@ -53,4 +53,8 @@ public class Apartment extends Property{
 
         return Objects.hash(getRooms(), reservations);
     }
+
+    public void addReservation(Reservation res) {
+        this.reservations.add(res);
+    }
 }

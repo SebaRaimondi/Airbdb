@@ -19,8 +19,11 @@ public class User {
     @Column(name="userId")
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Reservation> reservations;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "user")
+    private List<Reservation> reservations = new ArrayList<Reservation>();
 
 
     public User() {}
@@ -28,7 +31,6 @@ public class User {
     public User(String username, String name) {
         this.username = username;
         this.name = name;
-        this.reservations = new ArrayList<Reservation>();
     }
 
     public Long getId() {
@@ -88,5 +90,9 @@ public class User {
     public int hashCode() {
 
         return Objects.hash(getUsername(), getName(), getId(), getReservations());
+    }
+
+    public void addReservation(Reservation res) {
+        this.reservations.add(res);
     }
 }

@@ -21,8 +21,8 @@ public class Reservation {
     @JoinColumn(name="apartmentId")
     private Apartment apartment;
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="userId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     public Reservation(){}
@@ -30,8 +30,8 @@ public class Reservation {
     public Reservation(Apartment apartment, User user, Date from, Date to ) {
         this.from = from;
         this.to = to;
-        this.apartment = apartment;
-        this.user = user;
+        this.setApartment(apartment);
+        this.setUser(user);
     }
 
     public Long getId() {
@@ -64,14 +64,16 @@ public class Reservation {
 
     public void setApartment(Apartment apartment) {
         this.apartment = apartment;
-    }
-
-    public User getUser() {
-        return user;
+        apartment.addReservation(this);
     }
 
     public void setUser(User user) {
         this.user = user;
+        user.addReservation(this);
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public int nigths(){
