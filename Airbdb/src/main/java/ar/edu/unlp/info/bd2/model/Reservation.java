@@ -87,5 +87,15 @@ public class Reservation {
         return this.getApartment();
     }
 
+    public String toString() {
+        return "Reservation{" +
+                "id='" + id + '\'' +
+                ", from='" + from + '\'' +
+                ", to=" + to +
+                ", apartment=" + apartment +
+                ", user=" + user +
+                '}';
+    }
+
 
 }

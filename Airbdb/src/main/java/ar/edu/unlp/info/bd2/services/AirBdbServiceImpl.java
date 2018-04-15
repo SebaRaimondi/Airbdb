@@ -86,4 +86,11 @@ public class AirBdbServiceImpl implements AirBdbService {
     public boolean isPropertyAvailable(Long id, Date from, Date to){
         return repository.isPropertyAvailable(id, from, to);
     }
+
+    /* returns an user by a given id, null otherwise */
+    public Reservation getReservationById(Long id) {
+        return repository.getReservationById(id);
+    }
+
+
 }

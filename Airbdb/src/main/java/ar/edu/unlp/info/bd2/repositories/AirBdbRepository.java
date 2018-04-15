@@ -107,6 +107,10 @@ public class AirBdbRepository {
   public User getUserById(Long id) { return sessionFactory.getCurrentSession().get(User.class, id); }
 
 
+  /* returns an existing user by id, null otherwise */
+  public Reservation getReservationById(Long id) { return sessionFactory.getCurrentSession().get(Reservation.class, id); }
+
+
   /* returns an existing property by id, null otherwise */
   public Property getPropertyById(long id) {
     return sessionFactory.getCurrentSession().get(Property.class, id);
