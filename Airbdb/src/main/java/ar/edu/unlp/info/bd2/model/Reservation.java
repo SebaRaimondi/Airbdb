@@ -27,6 +27,13 @@ public class Reservation {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
+    @Column(name = "status", nullable = false)
+    private String status;
+
+    @OneToOne
+    @JoinColumn(name="ratingId")
+    private ReservationRating rating;
+
     public Reservation(){}
 
     public Reservation(Apartment apartment, User user, Date from, Date to ) {
@@ -34,6 +41,7 @@ public class Reservation {
         this.to = to;
         this.setApartment(apartment);
         this.setUser(user);
+        this.status = ReservationStatus.UNCONFIRMED;
     }
 
     public Long getId() {
@@ -101,5 +109,25 @@ public class Reservation {
                 '}';
     }
 
+    public String getStatus() {
+        return status;
+    }
 
+    public Reservation cancelReservation() {
+        this.status = ReservationStatus.CANCELED;
+        return this;
+    }
+
+    public Reservation finishReservation() {
+        this.status = ReservationStatus.FINISHED;
+        return this;
+    }
+
+    public ReservationRating getRating() {
+        return rating;
+    }
+
+    public void setRating(ReservationRating rating) {
+        this.rating = rating;
+    }
 }

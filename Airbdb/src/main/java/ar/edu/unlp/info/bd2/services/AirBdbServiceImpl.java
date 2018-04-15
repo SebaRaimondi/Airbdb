@@ -96,4 +96,27 @@ public class AirBdbServiceImpl implements AirBdbService {
     public void cancelReservation(Long reservationId) {
         repository.cancelReservation(reservationId);
     }
+
+    public ReservationRating createRating(Reservation reservation, int points, String comment) {
+        ReservationRating rating = new ReservationRating(reservation, points, comment);
+        return repository.storeRating(rating);
+    }
+
+    @Override
+    public void rateReservation(Long reservationId, int points, String comment) throws RateException {
+        Reservation reservation = this.getReservationById(reservationId);
+        if (reservation.getStatus() != ReservationStatus.FINISHED  ) throw new RateException();
+
+        this.createRating(reservation, points, comment);
+    }
+
+    @Override
+    public void finishReservation(Long id) {
+        repository.finishReservation(id);
+    }
+
+    @Override
+    public ReservationRating getRatingForReservation(Long reservationId) {
+        return repository.getRatingForReservation(reservationId);
+    }
 }

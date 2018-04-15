@@ -6,6 +6,9 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 
@@ -93,12 +96,17 @@ public class AirBdbRepository {
   /* returns true if a reservation for an apartment can be made in a period, false otherway */
   public boolean isPropertyAvailable(Long id, Date from, Date to) {
     Session session = sessionFactory.getCurrentSession();
-    String sql = "SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) ";
+    String sql = "SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.status <> :canceled) AND ( (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) )";
     TypedQuery<Reservation> query = session.createQuery(sql, Reservation.class);
     query.setParameter("apartmentId", id);
     query.setParameter("from", from);
     query.setParameter("to", to);
+    query.setParameter("canceled", ReservationStatus.CANCELED);
     List<Reservation> results = query.getResultList();
+    System.out.println("SIZE: " + results.size());
+    if (results.size() > 0) {
+      System.out.println("STATUS: " + results.iterator().next().getStatus());
+    }
     return results.isEmpty();
   }
 
@@ -117,15 +125,21 @@ public class AirBdbRepository {
   }
 
   public void cancelReservation(long reservationId) {
-    Reservation res = this.getReservationById(reservationId);
-    sessionFactory.getCurrentSession().remove(this.getPropertyById(reservationId));
-    res.getApartment().removeReservation(res);
-    res.getUser().removeReservation(res);
+    sessionFactory.getCurrentSession().persist(this.getReservationById(reservationId).cancelReservation());
   }
 
+  public ReservationRating storeRating(ReservationRating rating) {
+    sessionFactory.getCurrentSession().save(rating);
+    return rating;
+  }
 
+  public void finishReservation(long reservationId) {
+    sessionFactory.getCurrentSession().persist(this.getReservationById(reservationId).finishReservation());
+  }
 
-
+  public ReservationRating getRatingForReservation(Long id) {
+    return this.getReservationById(id).getRating();
+  }
 
 
 
