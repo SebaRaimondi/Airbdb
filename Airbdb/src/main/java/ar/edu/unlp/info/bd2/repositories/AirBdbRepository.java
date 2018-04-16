@@ -26,9 +26,9 @@ public class AirBdbRepository {
 
   /* returns true if a given username isnt used yet  */
   public boolean uniqueUsername(String username){
-    String sql = "SELECT u FROM User u WHERE u.username = :username";
+    String stmt = "SELECT u FROM User u WHERE u.username = :username";
     Session session = sessionFactory.getCurrentSession();
-    TypedQuery<User> query = session.createQuery(sql, User.class);
+    TypedQuery<User> query = session.createQuery(stmt, User.class);
     query.setParameter("username", username);
     List<User> results = query.getResultList();
     return results.isEmpty();
@@ -37,9 +37,9 @@ public class AirBdbRepository {
 
   /* returns an existing user by email, null otherwise */
   public User getUserByUsername(String email) {
-    String sql = "SELECT u FROM User u WHERE u.username = :email";
+    String stmt = "SELECT u FROM User u WHERE u.username = :email";
     Session session = sessionFactory.getCurrentSession();
-    TypedQuery<User> query = session.createQuery(sql, User.class);
+    TypedQuery<User> query = session.createQuery(stmt, User.class);
     query.setParameter("email", email);
     return ((Query<User>) query).uniqueResult();
   }
@@ -55,8 +55,8 @@ public class AirBdbRepository {
   /* searchs for a city given a name. returns it or null if the city doesn exist */
   public City findCityByName(String cityName){
     Session session = sessionFactory.getCurrentSession();
-    String sql = "SELECT c FROM City c WHERE c.name = :cityName";
-    TypedQuery<City> query = session.createQuery(sql, City.class);
+    String stmt = "SELECT c FROM City c WHERE c.name = :cityName";
+    TypedQuery<City> query = session.createQuery(stmt, City.class);
     query.setParameter("cityName", cityName);
     return ((Query<City>) query).uniqueResult();
   }
@@ -78,9 +78,9 @@ public class AirBdbRepository {
 
   /* returns a property by a given name, null otherwise */
   public Property getPropertyByName(String name) {
-    String sql = "SELECT p FROM Property p WHERE p.name = :name";
+    String stmt = "SELECT p FROM Property p WHERE p.name = :name";
     Session session = sessionFactory.getCurrentSession();
-    TypedQuery<Property> query = session.createQuery(sql, Property.class);
+    TypedQuery<Property> query = session.createQuery(stmt, Property.class);
     query.setParameter("name", name);
     return ((Query<Property>) query).uniqueResult();
   }
@@ -96,8 +96,8 @@ public class AirBdbRepository {
   /* returns true if a reservation for an apartment can be made in a period, false otherway */
   public boolean isPropertyAvailable(Long id, Date from, Date to) {
     Session session = sessionFactory.getCurrentSession();
-    String sql = "SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.status <> :canceled) AND ( (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) )";
-    TypedQuery<Reservation> query = session.createQuery(sql, Reservation.class);
+    String stmt = "SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.status <> :canceled) AND ( (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) )";
+    TypedQuery<Reservation> query = session.createQuery(stmt, Reservation.class);
     query.setParameter("apartmentId", id);
     query.setParameter("from", from);
     query.setParameter("to", to);
