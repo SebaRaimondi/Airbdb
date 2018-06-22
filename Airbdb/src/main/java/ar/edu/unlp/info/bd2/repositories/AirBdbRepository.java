@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -96,17 +97,17 @@ public class AirBdbRepository {
   /* returns true if a reservation for an apartment can be made in a period, false otherway */
   public boolean isPropertyAvailable(Long id, Date from, Date to) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT r FROM Reservation r WHERE r.id = :apartmentId AND (r.status <> :canceled) AND ( (r.from <= :from AND r.to >= :from) OR (r.from <= :to AND r.from >= :from) )";
+    String stmt = "SELECT r FROM Reservation r WHERE (r.id = :apartmentId) AND (r.status <> :canceled) AND ( (r.from BETWEEN :from AND :to) OR (r.to BETWEEN :from  AND :to) )";
     TypedQuery<Reservation> query = session.createQuery(stmt, Reservation.class);
     query.setParameter("apartmentId", id);
     query.setParameter("from", from);
     query.setParameter("to", to);
     query.setParameter("canceled", ReservationStatus.CANCELED);
     List<Reservation> results = query.getResultList();
-    System.out.println("SIZE: " + results.size());
-    if (results.size() > 0) {
-      System.out.println("STATUS: " + results.iterator().next().getStatus());
-    }
+
+    System.out.println("!!!! Cant. de reservas que se superponen: " + results.size());
+    System.out.println("!!!! Especificación de las reservas que se superponen: " + Arrays.toString(results.toArray()));
+    System.out.println("!!!! En repository isPropertyAvailable devuelvo: " + results.isEmpty());
     return results.isEmpty();
   }
 

@@ -34,7 +34,6 @@ public class Apartment extends Property{
     public String toString() {
         return "Apartment{" +
                 "rooms=" + rooms +
-                ", reservations=" + reservations +
                 ", id=" + this.getId() +
                 '}';
     }

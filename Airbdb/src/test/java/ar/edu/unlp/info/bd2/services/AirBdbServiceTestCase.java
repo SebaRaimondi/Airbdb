@@ -83,7 +83,7 @@ public class AirBdbServiceTestCase {
     this.service.createReservation(property.getId(), user.getId(), sdf.parse("20/10/2018"), sdf.parse("23/10/2018"));
     this.service.createReservation(property.getId(), user.getId(), sdf.parse("25/10/2018"), sdf.parse("28/10/2018"));
     try {
-      this.service.createReservation(property.getId(), user.getId(), sdf.parse("22/10/2018"), sdf.parse("24/10/2018"));
+      this.service.createReservation(property.getId(), user.getId(), sdf.parse("21/10/2018"), sdf.parse("24/10/2018"));
     } catch (ReservationException e) {
       return;
     }
