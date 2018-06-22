@@ -10,26 +10,24 @@
 ### Considerar para codear ...
 * session.getCurrentSession para no parametrizar la session
 * anotacion transactional en los metodos de la implementacion q implican algo atomico para no hacer tx commit etc en el repo
-* que las excepciones las levante el servicio
+* que las excepciones las levante el servicio (ese sería el que avisa oops algo anda mal)
 * que el repo solo acceda a datos
-
+* usar Query en vez de TypedQuery, ver como referencia el método isPropertyAvailable en el repo de acceso a datos
+* NO usar Criteria para las consultas
 ---
 
 ## TAREAS:
 
-* Hacer script bash para inicializar la db.
+* Arreglar el test Collision que pasa solo pero no cuando se ejecutan todos juntos.
+* Hacer TPE2
+* Hacer TP2
+* Hacer TP2E2
 
 ---
 
 ## DUDAS:
 
-* Check restricciones del modelo del tipo ... 'Cuando creas una ciudad checkear no haya otra con igual nombre (case insensitive)'. CON EXCEPCIONES? ver como seria ... pasa en user y properties tmb
 
-... Que onda cambiar interfaz para q tire exception username repetido, cityname repetido????? tengo que checkear apartment en una ciudad es unico nombre?
-
-* Que onda que el test de rent property collision no pasa cuando se ejecutan todos de una pero si cuando se ejecuta individualmente?
-
-* Esta bien usar typed queries o usamos criteria?
 
 
 
