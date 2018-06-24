@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AirBdbServiceTestCase.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AirBdbServiceTestCase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-525">
-              <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            <state relative-caret-position="300">
+              <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -24,23 +24,19 @@
       <file leaf-file-name="AirBdbServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="240">
               <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AirBdbRepository.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AirBdbRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/repositories/AirBdbRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+            <state relative-caret-position="285">
+              <caret line="103" column="33" lean-forward="true" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4383#4384#0" expanded="true" />
-                <element signature="e#4458#4459#0" expanded="true" />
-                <element signature="e#4999#5000#0" expanded="true" />
-                <element signature="e#5055#5056#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,9 +96,9 @@
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/Reservation.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/Apartment.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/User.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java" />
         <option value="$PROJECT_DIR$/createDatabase.sh" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/repositories/AirBdbRepository.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java" />
       </list>
     </option>
   </component>
@@ -124,6 +120,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -200,6 +197,46 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
+              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
+              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
+              <item name="config" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
+              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
+              <item name="model" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
+              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
+              <item name="repositories" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
+              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
+              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
+              <item name="services" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,47 +307,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
-              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
-              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
-              <item name="config" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
-              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
-              <item name="model" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
-              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
-              <item name="repositories" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="bd2-2018" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
-              <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
-              <item name="services" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -556,34 +552,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AirBdbServiceTestCase - 2018.06.21 at 22h 09m 53s.xml">
-      <configuration name="AirBdbServiceTestCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase - 2018.06.21 at 22h 14m 04s.xml">
-      <configuration name="AirBdbServiceTestCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase - 2018.06.21 at 22h 14m 31s.xml">
-      <configuration name="AirBdbServiceTestCase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.06.21 at 22h 15m 20s.xml">
-      <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testRentProperty - 2018.06.21 at 22h 16m 47s.xml">
-      <configuration name="AirBdbServiceTestCase.testRentProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.21 at 22h 17m 08s.xml">
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.21 at 22h 21m 02s.xml">
       <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testIsPropertyAvailable - 2018.06.21 at 22h 17m 26s.xml">
-      <configuration name="AirBdbServiceTestCase.testIsPropertyAvailable" configurationId="JUnit" />
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.21 at 22h 22m 43s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testRateReservation - 2018.06.21 at 22h 17m 45s.xml">
-      <configuration name="AirBdbServiceTestCase.testRateReservation" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceTestCase - 2018.06.21 at 22h 18m 09s.xml">
+    <history-entry file="AirBdbServiceTestCase - 2018.06.21 at 22h 23m 06s.xml">
       <configuration name="AirBdbServiceTestCase" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.21 at 22h 21m 02s.xml">
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.21 at 22h 24m 08s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.24 at 15h 44m 59s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.24 at 15h 48m 21s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.24 at 15h 49m 02s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.24 at 15h 52m 02s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.24 at 16h 00m 04s.xml">
+      <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceTestCase_testRentPropertyCollision - 2018.06.24 at 16h 02m 33s.xml">
       <configuration name="AirBdbServiceTestCase.testRentPropertyCollision" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -597,7 +593,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.14241724" side_tool="true" weight="0.32913387" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.14241724" side_tool="true" weight="0.32899022" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85758275" weight="0.78990227" />
@@ -615,9 +611,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Learn" order="5" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Learn" order="5" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -625,6 +621,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -822,21 +823,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/ReservationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/Apartment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1698#1699#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,31 +851,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/ReservationException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        <state relative-caret-position="240">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/repositories/AirBdbRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+        <state relative-caret-position="285">
+          <caret line="103" column="33" lean-forward="true" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4383#4384#0" expanded="true" />
-            <element signature="e#4458#4459#0" expanded="true" />
-            <element signature="e#4999#5000#0" expanded="true" />
-            <element signature="e#5055#5056#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbServiceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
         </state>
       </provider>
     </entry>
