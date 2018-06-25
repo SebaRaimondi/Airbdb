@@ -19,8 +19,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     /* creates a new user and returns it. throws UsernameException if the chosen username is already taken */
     public User createUser(String username, String name) throws RepeatedUsernameException{
         username = username.toLowerCase();
-        /* si uso exception poner en la firma del metodo throws UsernameException en esta clase y en la interfaz */
-       /* if (! this.repository.uniqueUsername(username)) throw new UsernameException(); */
+        if (! this.repository.uniqueUsername(username)) throw new RepeatedUsernameException();
         User user = new User (username, name);
         return repository.storeUser(user);
     }
