@@ -4,6 +4,7 @@ import ar.edu.unlp.info.bd2.model.*;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -17,6 +18,9 @@ public class AirBdbRepository {
 
   @Autowired
   SessionFactory sessionFactory;
+
+  /* ------------------------------   ETAPA 1  ------------------------------ */
+
 
   /* saves a new user and returns it */
   public User storeUser(User user){
@@ -143,6 +147,18 @@ public class AirBdbRepository {
   }
 
 
+  /* ------------------------------   ETAPA 2  ------------------------------ */
+
+  public List<Property> getAllPropertiesReservedByUser(String userEmail) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT prop FROM Reservation r, User u, Property prop WHERE u.username=:username AND r.userId = u.userId AND r.apartmentID = prop.propertyId";
+    Query query = session.createQuery(stmt);
+    query.setParameter("username", userEmail);
+    List<Property> results = query.getResultList();
+
+    System.out.println("!!!! En repository getAllPropertiesReservedByUser" + userEmail +" devuelvo: " + results);
+    return results;
+  }
 
 
 

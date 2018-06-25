@@ -16,12 +16,18 @@
 * NO usar Criteria para las consultas
 ---
 
-## TAREAS:
+## ACTIVIDADES:
 
-* Arreglar el test Collision que pasa solo pero no cuando se ejecutan todos juntos.
+* Arreglar el test Collision y isPropAvailable que pasan solos pero no cuando se ejecutan todos juntos.
 * Hacer TPE2
 * Hacer TP2
 * Hacer TP2E2
+
+## TAREAS:
+
+* Camila hacer primera mitad tests StatisticsService
+* Camila hacer primera mitad pr mongo teorica
+* Camila hacer primera mitad pr mongo práctica
 
 ---
 

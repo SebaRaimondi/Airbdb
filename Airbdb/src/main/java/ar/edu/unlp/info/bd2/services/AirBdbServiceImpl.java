@@ -5,6 +5,7 @@ import ar.edu.unlp.info.bd2.repositories.AirBdbRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 
 public class AirBdbServiceImpl implements AirBdbService {
@@ -14,6 +15,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         this.repository = repository;
     }
 
+    /* ------------------------------  ETAPA 1  ------------------------------ */
 
     @Transactional
     /* creates a new user and returns it. throws UsernameException if the chosen username is already taken */
@@ -102,6 +104,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     }
 
     @Override
+    @Transactional
     public void rateReservation(Long reservationId, int points, String comment) throws RateException {
         Reservation reservation = this.getReservationById(reservationId);
         if (reservation.getStatus() != ReservationStatus.FINISHED  ) throw new RateException();
@@ -110,6 +113,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     }
 
     @Override
+    @Transactional
     public void finishReservation(Long id) {
         repository.finishReservation(id);
     }
@@ -118,4 +122,11 @@ public class AirBdbServiceImpl implements AirBdbService {
     public ReservationRating getRatingForReservation(Long reservationId) {
         return repository.getRatingForReservation(reservationId);
     }
+
+    /* ------------------------------   ETAPA 2  ------------------------------ */
+
+    public List<Property> getAllPropertiesReservedByUser(String userEmail) {
+        return repository.getAllPropertiesReservedByUser(userEmail);
+    }
+
 }

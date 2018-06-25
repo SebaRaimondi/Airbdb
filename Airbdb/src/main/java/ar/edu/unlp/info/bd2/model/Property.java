@@ -11,7 +11,7 @@ public class Property {
     @Column(name="propertyId")
     protected Long id;
 
-    @Column(nullable=false, unique = true)
+    @Column(nullable=false)
     protected String name;
 
     @Column(nullable=false)
