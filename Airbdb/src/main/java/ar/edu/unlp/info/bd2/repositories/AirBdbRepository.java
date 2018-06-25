@@ -106,7 +106,7 @@ public class AirBdbRepository {
     List<Reservation> results = query.getResultList();
 
     System.out.println("!!!! Cant. de reservas que se superponen: " + results.size());
-    System.out.println("!!!! Especificación de las reservas que se superponen: " + Arrays.toString(results.toArray()));
+    System.out.println("!!!! Especificación de las reservas que se superponen: " + results);
     System.out.println("!!!! En repository isPropertyAvailable devuelvo: " + results.isEmpty());
     return results.isEmpty();
   }

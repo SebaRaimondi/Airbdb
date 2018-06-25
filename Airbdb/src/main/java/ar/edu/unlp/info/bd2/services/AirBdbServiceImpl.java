@@ -17,7 +17,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Transactional
     /* creates a new user and returns it. throws UsernameException if the chosen username is already taken */
-    public User createUser(String username, String name){
+    public User createUser(String username, String name) throws RepeatedUsernameException{
         username = username.toLowerCase();
         /* si uso exception poner en la firma del metodo throws UsernameException en esta clase y en la interfaz */
        /* if (! this.repository.uniqueUsername(username)) throw new UsernameException(); */
@@ -35,7 +35,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Transactional
     /* creates a new apartment and returns it */
-    public Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName){
+    public Apartment createAparment(String name, String description, double price, int capacity, int rooms, String cityName){
         cityName = cityName.toUpperCase();
         City city = repository.findCityByName(cityName);
         if (city == null){

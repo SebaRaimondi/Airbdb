@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 
-public interface AirBdbService {
+public interface AirBdbService extends AirBdbStatisticsService {
 
   /**
    * Crea un usuario
@@ -14,7 +14,7 @@ public interface AirBdbService {
    * @param name nombre real del usuario
    * @return el usuario creado
    */
-  User createUser(String username, String name);
+  User createUser(String username, String name) throws RepeatedUsernameException;
 
   /**
    * Obtiene un usuario por su username (email)
@@ -33,7 +33,7 @@ public interface AirBdbService {
    * @param cityName nombre de la ciudad en la que está localizada la propiedad
    * @return la propiedad creada
    */
-  Apartment createApartment(String name, String description, double price, int capacity, int rooms, String cityName);
+  Apartment createAparment(String name, String description, double price, int capacity, int rooms, String cityName);
 
   /**
    * Crea una nueva habitación dentro de una propiedad
