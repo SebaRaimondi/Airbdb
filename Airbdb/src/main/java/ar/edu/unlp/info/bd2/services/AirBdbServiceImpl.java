@@ -133,7 +133,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Transactional
     public List<User> getUsersSpendingMoreThan(double amount){
-        return amount);
+        return getUsersSpendingMoreThan(amount);
 
     }
 
