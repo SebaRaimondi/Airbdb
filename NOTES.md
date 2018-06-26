@@ -16,24 +16,20 @@
 * NO usar Criteria para las consultas
 ---
 
-## ACTIVIDADES:
-
-* Arreglar el test Collision y isPropAvailable que pasan solos pero no cuando se ejecutan todos juntos.
-* Hacer TPE2
-* Hacer TP2
-* Hacer TP2E2
-
 ## TAREAS:
 
-* Camila hacer primera mitad tests StatisticsService
-* Camila hacer primera mitad pr mongo teorica
-* Camila hacer primera mitad pr mongo práctica
-
+* Arreglar el test Collision y isPropAvailable que pasan solos pero no cuando se ejecutan todos juntos.
+* Check eso de DBInitializer
+* Seba hacer segunda mitad TPE2
+* Hacer TP2
+* Hacer TP2E2
 ---
 
 ## DUDAS:
 
 * NO puedo hacer pasar el testRentPropertyCpllision cuando se ejecutan todos juntos (NOTAR AHORA TAMBIEN PASA ESO CON EL TESTISPROPERTYAVAILABLE!). Algo para remarcar es que si cambio el orden en que se crean las reservas de prueba, tampoco pasa individual. Es como que veo en el sql que se agregan las 2 reservas de prueba sin problemas, pero solamente se muestra el 'no podes agregar la nueva' cuando la nueva colisiona con la primer reserva agregada .... no entiendo. Si se quiere ver el metodo isPropertyAvailable en el repository, contempla el caso en el que la nueva reserva tenga una reserva vieja 'anidada' en sus fechas de from-to o bien sea ésta la que este entre las fechas from-to de una vieja.
+
+* Cuando en la segunda parte del tp quiero ver si pasan o no los 6 tests que implementé no puedo porque el metodo que se ejecuta antes que todo llamado prepareDB del DBInitializer guarda 81 props 80 users pero cuando va al tema de la reserva, que la crea, hace el finish y después la intenta calificar, salta excepcion 'la reserva debe estar finalizada previo a calificarse' y tipo el test de la primer parte que checkeaba eso anda bien, no se por que ahora da error. Además me fijo en la db y aparece la primera como finalizada ...  despues de eso no sigue creando más reservas, corta ahi.
  
 
 

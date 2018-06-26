@@ -10,6 +10,8 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -151,19 +153,74 @@ public class AirBdbRepository {
 
   public List<Property> getAllPropertiesReservedByUser(String userEmail) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT prop FROM Reservation r, User u, Property prop WHERE u.username=:username AND r.userId = u.userId AND r.apartmentID = prop.propertyId";
+    String stmt = "SELECT prop FROM Reservation r, User u, Property prop WHERE u.username=:username AND r.user.id = u.id AND r.apartment.id = prop.id";
     Query query = session.createQuery(stmt);
     query.setParameter("username", userEmail);
     List<Property> results = query.getResultList();
 
-    System.out.println("!!!! En repository getAllPropertiesReservedByUser" + userEmail +" devuelvo: " + results);
+    System.out.println("!!!! En repository getAllPropertiesReservedByUser " + userEmail +" devuelvo: " + results);
     return results;
   }
 
 
+  public List<User> getUsersSpendingMoreThan(double amount) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u  GROUP BY u HAVING sum(r.apartment.price * (r.to - r.from)) > :amount";
+    Query query = session.createQuery(stmt);
+    query.setParameter("amount", amount);
+    List<User> results = query.getResultList();
 
+    System.out.println("!!!! En repository getUsersSpendingMoreThan " + amount +" devuelvo: " + results);
+    return results;
+  }
 
+  public List<Object[]> getApartmentTop3Ranking(){
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT a, AVG(rr.points) FROM Reservation r, ReservationRating rr, Property a GROUP BY a ORDER BY AVG(rr.points) DESC";
+    Query query = session.createQuery(stmt);
+    query.setMaxResults(3);
+    List<Object[]> results = query.getResultList();
 
+    System.out.println("!!!! En repository getApartmentTop3Ranking devuelvo: " + results);
+    return results;
+  }
 
+  public List<User> getUsersThatReservedMoreThan1PropertyDuringASpecificYear(int year){
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u AND YEAR(r.from) = :year AND YEAR(r.to) = :year GROUP BY u HAVING COUNT(*) > 1";
+    Query query = session.createQuery(stmt);
+    query.setParameter("year", year);
+    List<User> results = query.getResultList();
+
+    System.out.println("!!!! En repository getUsersThatReservedMoreThan1PropertyDuringASpecificYear devuelvo: " + results);
+    return results;
+  }
+
+  public List<Property> getPropertiesThatHaveBeenReservedByMoreThanOneUserWithCapacityMoreThan(int capacity) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT r FROM Reservation r WHERE r.apartment.capacity > :capacity GROUP BY r.apartment HAVING COUNT(DISTINCT r.user ) > 1";
+    Query query = session.createQuery(stmt);
+    query.setParameter("capacity", capacity);
+    List<Property> results = query.getResultList();
+
+    System.out.println("!!!! En repository getPropertiesThatHaveBeenReservedByMoreThanOneUserWithCapacityMoreThan devuelvo: " + results);
+    return results;
+  }
+
+  public List<Reservation> getReservationsInCitiesForUser(String username, String[] cities) {
+    ArrayList<String> list = new ArrayList<String>();
+    for (Object c : cities) {
+      list.add(c.toString());
+    }
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT r.apartment FROM Reservation r WHERE r.user.username = :username AND r.apartment.city.name IN (:cities)";
+    Query query = session.createQuery(stmt);
+    query.setParameter("username", username);
+    query.setParameter("cities", list);
+    List<Reservation> results = query.getResultList();
+
+    System.out.println("!!!! En repository getReservationsInCitiesForUser devuelvo: " + results);
+    return results;
+  }
 
 }

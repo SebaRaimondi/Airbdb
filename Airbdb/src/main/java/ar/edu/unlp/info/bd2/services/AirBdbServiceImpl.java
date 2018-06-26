@@ -26,7 +26,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         return repository.storeUser(user);
     }
 
-
+    @Transactional
     /* returns an user by a given email, null otherwise */
     public User getUserByUsername(String email) {
         email = email.toLowerCase();
@@ -47,7 +47,7 @@ public class AirBdbServiceImpl implements AirBdbService {
         return repository.storeApartment(apartment);
     }
 
-
+    @Transactional
     /* returns a property by a given name, null otherwise */
     public Property getPropertyByName(String name) {
         return repository.getPropertyByName(name);
@@ -77,33 +77,35 @@ public class AirBdbServiceImpl implements AirBdbService {
         return repository.storeReservation(reservation);
     }
 
-
+    @Transactional
     /* returns an user by a given id, null otherwise */
     public User getUserById(Long id) {
         return repository.getUserById(id);
     }
 
+    @Transactional
     /* returns an user by a given id, null otherwise */
     public boolean isPropertyAvailable(Long id, Date from, Date to){
         return repository.isPropertyAvailable(id, from, to);
     }
 
+    @Transactional
     /* returns an user by a given id, null otherwise */
     public Reservation getReservationById(Long id) {
         return repository.getReservationById(id);
     }
 
-    @Override
+    @Transactional
     public void cancelReservation(Long reservationId) {
         repository.cancelReservation(reservationId);
     }
 
+    @Transactional
     public ReservationRating createRating(Reservation reservation, int points, String comment) {
         ReservationRating rating = new ReservationRating(reservation, points, comment);
         return repository.storeRating(rating);
     }
 
-    @Override
     @Transactional
     public void rateReservation(Long reservationId, int points, String comment) throws RateException {
         Reservation reservation = this.getReservationById(reservationId);
@@ -112,21 +114,46 @@ public class AirBdbServiceImpl implements AirBdbService {
         this.createRating(reservation, points, comment);
     }
 
-    @Override
     @Transactional
     public void finishReservation(Long id) {
         repository.finishReservation(id);
     }
 
-    @Override
+    @Transactional
     public ReservationRating getRatingForReservation(Long reservationId) {
         return repository.getRatingForReservation(reservationId);
     }
 
     /* ------------------------------   ETAPA 2  ------------------------------ */
 
+    @Transactional
     public List<Property> getAllPropertiesReservedByUser(String userEmail) {
         return repository.getAllPropertiesReservedByUser(userEmail);
     }
 
+    @Transactional
+    public List<User> getUsersSpendingMoreThan(double amount){
+        return amount);
+
+    }
+
+    @Transactional
+    public List<Object[]> getApartmentTop3Ranking(){
+        return repository.getApartmentTop3Ranking();
+    }
+
+    @Transactional
+    public List<User> getUsersThatReservedMoreThan1PropertyDuringASpecificYear(int year){
+        return repository.getUsersThatReservedMoreThan1PropertyDuringASpecificYear(year);
+    }
+
+    @Transactional
+    public List<Property> getPropertiesThatHaveBeenReservedByMoreThanOneUserWithCapacityMoreThan(int capacity){
+        return repository.getPropertiesThatHaveBeenReservedByMoreThanOneUserWithCapacityMoreThan(capacity);
+    }
+
+    @Transactional
+    public List<Reservation> getReservationsInCitiesForUser(String username, String... cities) {
+        return repository.getReservationsInCitiesForUser(username, cities);
+    }
 }

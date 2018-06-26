@@ -37,6 +37,7 @@ public class AirBdbStatisticsServiceTestCase {
     @Autowired
     AirBdbStatisticsService service;
 
+
     @BeforeAll
     public void prepareDB() throws Exception {
         this.initializer.prepareDB();
