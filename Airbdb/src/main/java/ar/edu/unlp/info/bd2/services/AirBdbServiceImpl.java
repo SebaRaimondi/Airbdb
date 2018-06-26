@@ -109,8 +109,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     @Transactional
     public void rateReservation(Long reservationId, int points, String comment) throws RateException {
         Reservation reservation = this.getReservationById(reservationId);
-        if (reservation.getStatus() != ReservationStatus.FINISHED  ) throw new RateException();
-
+        if (!reservation.getStatus().equals(ReservationStatus.FINISHED)) throw new RateException();
         this.createRating(reservation, points, comment);
     }
 
