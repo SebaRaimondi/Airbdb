@@ -106,6 +106,8 @@ public class Reservation {
                 ", to=" + to +
                 ", apartment=" + apartment +
                 ", user=" + user +
+                ", status=" + status +
+                ", rating=" + rating +
                 '}';
     }
 
