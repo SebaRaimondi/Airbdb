@@ -22,6 +22,8 @@ public class ReservationRating {
     @Column(name = "comment", nullable = false)
     private String comment;
 
+    public ReservationRating(){}
+
     public ReservationRating(Reservation reservation, int points, String comment) {
         this.setReservation(reservation);
         this.points = points;

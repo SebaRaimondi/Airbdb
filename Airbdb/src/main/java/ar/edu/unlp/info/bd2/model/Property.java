@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.bd2.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="properties")
@@ -26,6 +27,9 @@ public class Property {
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="cityId")
     protected City city;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "apartment", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 
     public Property(){};
 
@@ -83,5 +87,13 @@ public class Property {
 
     public void setCityId(City city) {
         this.city = city;
+    }
+
+    public void addReservation(Reservation res) {
+        this.reservations.add(res);
+    }
+
+    public void removeReservation(Reservation res) {
+        this.reservations.remove(res);
     }
 }

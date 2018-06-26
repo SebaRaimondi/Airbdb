@@ -71,7 +71,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     /* creates a new reservation and returns it */
     public Reservation createReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException{
         if (! this.isPropertyAvailable(apartmentId, from, to) ) throw new ReservationException();
-        Apartment apartment = (Apartment) repository.getPropertyById(apartmentId);
+        Property apartment = (Property) repository.getPropertyById(apartmentId);
         User user = repository.getUserById(userId);
         Reservation reservation = new Reservation(apartment, user, from, to);
         return repository.storeReservation(reservation);
