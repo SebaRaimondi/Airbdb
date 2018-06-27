@@ -11,7 +11,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="AirBdbStatisticsServiceTestCase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbStatisticsServiceTestCase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1854">
+              <caret line="137" column="5" lean-forward="true" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AirBdbServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -80,8 +105,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/City.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbStatisticsServiceTestCase.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/model/Reservation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/repositories/AirBdbRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -93,17 +118,16 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="1280" />
+    <option name="y" value="-2" />
+    <option name="width" value="1280" />
+    <option name="height" value="722" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -127,82 +151,6 @@
               <item name="bd2-2018" type="616d4139:PackageViewModuleNode" />
               <item name="ar.edu.unlp.info.bd2" type="1f31426a:PackageElementNode" />
               <item name="services" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="java" type="cbb8eebc:String" user="java" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="java" type="cbb8eebc:String" user="java" />
-              <item name="ar/edu/unlp/info/bd2" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="java" type="cbb8eebc:String" user="java" />
-              <item name="ar/edu/unlp/info/bd2" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2" />
-              <item name="repositories" type="cbb8eebc:String" user="repositories" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="main" type="cbb8eebc:String" user="main" />
-              <item name="java" type="cbb8eebc:String" user="java" />
-              <item name="ar/edu/unlp/info/bd2" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2" />
-              <item name="services" type="cbb8eebc:String" user="services" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="test" type="cbb8eebc:String" user="test" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="test" type="cbb8eebc:String" user="test" />
-              <item name="java" type="cbb8eebc:String" user="java" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="test" type="cbb8eebc:String" user="test" />
-              <item name="java" type="cbb8eebc:String" user="java" />
-              <item name="ar/edu/unlp/info/bd2/services" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2/services" />
             </path>
           </expand>
           <select />
@@ -318,6 +266,83 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="ar/edu/unlp/info/bd2" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="ar/edu/unlp/info/bd2" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2" />
+              <item name="repositories" type="cbb8eebc:String" user="repositories" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="ar/edu/unlp/info/bd2" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2" />
+              <item name="services" type="cbb8eebc:String" user="services" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Airbdb" type="cbb8eebc:String" user="Airbdb" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="ar/edu/unlp/info/bd2/services" type="cbb8eebc:String" user="ar/edu/unlp/info/bd2/services" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,7 +365,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in bd2-2018">
+  <component name="RunManager" selected="JUnit.AirBdbStatisticsServiceTestCase">
     <configuration default="true" type="Application" factoryName="Application">
       <module name="bd2-2018" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -530,9 +555,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AirBdbStatisticsServiceTestCase" />
         <item itemvalue="JUnit.All in bd2-2018" />
         <item itemvalue="JUnit.ar.edu.unlp.info.bd2.services in bd2-2018" />
-        <item itemvalue="JUnit.AirBdbStatisticsServiceTestCase" />
         <item itemvalue="JUnit.AirBdbServiceTestCase" />
         <item itemvalue="JUnit.AirBdbStatisticsServiceTestCase.testGetCitiesThatHaveReservationsBetween" />
       </list>
@@ -552,9 +577,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ar_edu_unlp_info_bd2_services_in_bd2-2018 - 2018.06.27 at 14h 57m 27s.xml">
-      <configuration name="ar.edu.unlp.info.bd2.services in bd2-2018" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ar_edu_unlp_info_bd2_services_in_bd2-2018 - 2018.06.27 at 14h 58m 48s.xml">
       <configuration name="ar.edu.unlp.info.bd2.services in bd2-2018" configurationId="JUnit" />
     </history-entry>
@@ -582,25 +604,28 @@
     <history-entry file="All_in_bd2-2018 - 2018.06.27 at 15h 10m 08s.xml">
       <configuration name="All in bd2-2018" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AirBdbStatisticsServiceTestCase - 2018.06.27 at 17h 39m 49s.xml">
+      <configuration name="AirBdbStatisticsServiceTestCase" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1280" y="-2" width="1280" height="722" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.47421876" weight="0.6771819" />
+      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.47421876" weight="0.67589575" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5257813" side_tool="true" weight="0.6456362" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85758275" weight="0.37329128" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85758275" visible="true" weight="0.37296417" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14583333" />
-      <window_info id="Learn" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -613,6 +638,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Learn" order="5" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -790,13 +816,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3160">
-          <caret line="84" column="17" selection-start-line="84" selection-start-column="17" selection-end-line="84" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Set.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/utils/DBInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -856,26 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbStatisticsServiceTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="137" column="5" lean-forward="true" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="160" column="62" selection-start-line="160" selection-start-column="62" selection-end-line="160" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/repositories/AirBdbRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
@@ -890,6 +890,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="97" selection-start-line="90" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlp/info/bd2/services/AirBdbStatisticsServiceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1854">
+          <caret line="137" column="5" lean-forward="true" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlp/info/bd2/services/AirBdbServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

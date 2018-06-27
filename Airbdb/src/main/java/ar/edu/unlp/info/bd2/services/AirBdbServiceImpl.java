@@ -37,7 +37,6 @@ public class AirBdbServiceImpl implements AirBdbService {
     @Transactional
     /* creates a new apartment and returns it */
     public Apartment createAparment(String name, String description, double price, int capacity, int rooms, String cityName){
-        cityName = cityName.toUpperCase();
         City city = repository.findCityByName(cityName);
         if (city == null){
             city = new City(cityName);
@@ -57,7 +56,6 @@ public class AirBdbServiceImpl implements AirBdbService {
     @Transactional
     /* creates a new room and returns it */
     public PrivateRoom createRoom(String name, String description, double price, int capacity, int beds, String cityName){
-        cityName = cityName.toUpperCase();
         City city = repository.findCityByName(cityName);
         if (city == null){
             city = new City(cityName);
