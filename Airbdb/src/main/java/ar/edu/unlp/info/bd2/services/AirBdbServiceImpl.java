@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 
 public class AirBdbServiceImpl implements AirBdbService {
@@ -72,7 +71,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     /* creates a new reservation and returns it */
     public Reservation createReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException{
         if (! this.isPropertyAvailable(apartmentId, from, to) ) throw new ReservationException();
-        Property apartment = (Property) repository.getPropertyById(apartmentId);
+        Property apartment = repository.getPropertyById(apartmentId);
         User user = repository.getUserById(userId);
         Reservation reservation = new Reservation(apartment, user, from, to);
         return repository.storeReservation(reservation);
@@ -102,7 +101,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     }
 
     @Transactional
-    public ReservationRating createRating(Reservation reservation, int points, String comment) {
+    private ReservationRating createRating(Reservation reservation, int points, String comment) {
         ReservationRating rating = new ReservationRating(reservation, points, comment);
         return repository.storeRating(rating);
     }
@@ -159,7 +158,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Transactional
     public List<City> getCitiesThatHaveReservationsBetween(Date from, Date to) {
-        return repository.getCitiesWithReservationsBetween(from, to);
+        return repository.getCitiesThatHaveReservationsBetween(from, to);
     }
 
     @Transactional
@@ -180,5 +179,10 @@ public class AirBdbServiceImpl implements AirBdbService {
     @Override
     public List<User> getMatchingUsersThatOnlyHaveReservationsInCities(String usernamePart, String... cities) {
         return repository.getMatchingUsersThatOnlyHaveReservationsInCities(usernamePart, cities);
+    }
+
+    @Override
+    public List<User> getUsersThatReservedOnlyInCities(String... cities) {
+        return repository.getUsersThatReservedOnlyInCities(cities);
     }
 }

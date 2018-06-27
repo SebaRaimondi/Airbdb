@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AirBdbRepository {
 
@@ -222,7 +223,7 @@ public class AirBdbRepository {
     return results;
   }
 
-  public List<City> getCitiesWithReservationsBetween(Date from, Date to) {
+  public List<City> getCitiesThatHaveReservationsBetween(Date from, Date to) {
     Session session = sessionFactory.getCurrentSession();
     String stmt = "SELECT DISTINCT r.apartment.city FROM Reservation r WHERE ((:from <= r.from AND r.from <= :to) AND (:from <= r.to AND r.to <= :to))";
     Query query = session.createQuery(stmt);
@@ -230,7 +231,7 @@ public class AirBdbRepository {
     query.setParameter("to", to);
     List<City> results = query.getResultList();
 
-    System.out.println("!!!! En repository getCitiesWithReservationsBetween devuelvo: " + results);
+    System.out.println("!!!! En repository getCitiesThatHaveReservationsBetween devuelvo: " + results);
     return results;
   }
 
@@ -266,13 +267,17 @@ public class AirBdbRepository {
     return results;
   }
 
-  /**
-   * Devuelve una lista de usuarios que hayan reservado sólo en el conjunto de ciudades cuyos nombres son descriptos en <code>cities</code>
-   * y cuyo username contenga <code>usernamePart</code>
-   * @param usernamePart
-   * @param cities
-   * @return La lista de usuarios que satisfaga los criterios descriptos
-   */
+  public List<User> getUsersThatReservedOnlyInCities(String... cities) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT u FROM User u WHERE NOT EXISTS (SELECT r FROM Reservation r WHERE u = r.user AND r.apartment.city.name NOT IN :cities)";
+    Query query = session.createQuery(stmt);
+    query.setParameterList("cities", cities);
+    List<User> results = query.getResultList();
+
+    System.out.println("!!!! En repository getUsersThatReservedOnlyInCities devuelvo: " + results);
+    return results;
+  }
+
   public List<User> getMatchingUsersThatOnlyHaveReservationsInCities(String usernamePart, String... cities) {
     Session session = sessionFactory.getCurrentSession();
     String stmt = "SELECT u FROM User u WHERE u.username LIKE :username AND NOT EXISTS (SELECT r FROM Reservation r WHERE u = r.user AND r.apartment.city.name NOT IN :cities)";
