@@ -165,7 +165,7 @@ public class AirBdbRepository {
 
   public List<User> getUsersSpendingMoreThan(double amount) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u  GROUP BY u HAVING sum(r.apartment.price * (r.to - r.from)) > :amount";
+    String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u  GROUP BY u HAVING sum(r.apartment.price) > :amount";
     Query query = session.createQuery(stmt);
     query.setParameter("amount", amount);
     List<User> results = query.getResultList();
@@ -176,12 +176,17 @@ public class AirBdbRepository {
 
   public List<Object[]> getApartmentTop3Ranking(){
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT a, AVG(rr.points) FROM Reservation r, ReservationRating rr, Property a GROUP BY a ORDER BY AVG(rr.points) DESC";
+    String stmt = "SELECT rr.reservation.apartment, AVG(rr.points) as points FROM ReservationRating rr, Apartment a WHERE rr.reservation.apartment = a GROUP BY rr.reservation.apartment ORDER BY AVG(rr.points) DESC";
     Query query = session.createQuery(stmt);
     query.setMaxResults(3);
     List<Object[]> results = query.getResultList();
 
-    System.out.println("!!!! En repository getApartmentTop3Ranking devuelvo: " + results);
+    System.out.println("!!!! En repository getApartmentTop3Ranking devuelvo: ");
+
+    for (Object[] r : results) {
+      System.out.println("!!!! APARTMENT: " + r[0] + "  |||  AVG POINTS: " + r[1]);
+    }
+
     return results;
   }
 
@@ -198,7 +203,7 @@ public class AirBdbRepository {
 
   public List<Property> getPropertiesThatHaveBeenReservedByMoreThanOneUserWithCapacityMoreThan(int capacity) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT r FROM Reservation r WHERE r.apartment.capacity > :capacity GROUP BY r.apartment HAVING COUNT(DISTINCT r.user ) > 1";
+    String stmt = "SELECT r.apartment FROM Reservation r WHERE r.apartment.capacity > :capacity GROUP BY r.apartment HAVING COUNT(DISTINCT r.user ) > 1";
     Query query = session.createQuery(stmt);
     query.setParameter("capacity", capacity);
     List<Property> results = query.getResultList();
@@ -213,7 +218,7 @@ public class AirBdbRepository {
       list.add(c.toString());
     }
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT r.apartment FROM Reservation r WHERE r.user.username = :username AND r.apartment.city.name IN (:cities)";
+    String stmt = "SELECT r FROM Reservation r WHERE r.user.username = :username AND r.apartment.city.name IN (:cities)";
     Query query = session.createQuery(stmt);
     query.setParameter("username", username);
     query.setParameter("cities", list);

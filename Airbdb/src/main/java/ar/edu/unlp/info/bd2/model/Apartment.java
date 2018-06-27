@@ -32,10 +32,10 @@ public class Apartment extends Property{
 
     @Override
     public String toString() {
-        return "Apartment{" +
+        return super.toString() + "Apartment{" +
                 "rooms=" + rooms +
                 ", id=" + this.getId() +
-                '}';
+                "}";
     }
 
     @Override

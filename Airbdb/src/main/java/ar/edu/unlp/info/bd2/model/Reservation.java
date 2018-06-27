@@ -68,7 +68,7 @@ public class Reservation {
         this.to = to;
     }
 
-    public Apartment getApartment() {
+    public Property getApartment() {
         return apartment;
     }
 
@@ -95,7 +95,7 @@ public class Reservation {
         return this.nigths() * this.getApartment().getPrice();
     }
 
-    public Apartment getProperty(){
+    public Property getProperty(){
         return this.getApartment();
     }
 

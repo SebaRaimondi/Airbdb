@@ -24,4 +24,11 @@ public class PrivateRoom extends Property{
     public void setBeds(int beds) {
         this.beds = beds;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "PrivateRoom{" +
+                "beds=" + beds +
+                "}";
+    }
 }

@@ -96,4 +96,10 @@ public class Property {
     public void removeReservation(Reservation res) {
         this.reservations.remove(res);
     }
+
+    @Override
+    public String toString() {
+        return "Property: " +
+                "name=" + name + "-->";
+    }
 }
