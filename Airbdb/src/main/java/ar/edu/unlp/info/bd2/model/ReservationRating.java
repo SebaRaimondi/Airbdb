@@ -66,7 +66,6 @@ public class ReservationRating {
     public String toString() {
         return "ReservationRating{" +
                 "id=" + id +
-                ", reservation=" + reservation +
                 ", points=" + points +
                 ", comment='" + comment + '\'' +
                 '}';

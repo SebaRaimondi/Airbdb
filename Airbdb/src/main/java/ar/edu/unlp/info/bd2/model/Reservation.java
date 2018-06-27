@@ -19,6 +19,9 @@ public class Reservation {
     @Column(name = "date_to", nullable = false)
     private Date to;
 
+    @Column(name="price", nullable = false)
+    private double price;
+
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="apartmentId")
     private Property apartment;
@@ -42,6 +45,7 @@ public class Reservation {
         this.setApartment(apartment);
         this.setUser(user);
         this.status = ReservationStatus.UNCONFIRMED;
+        this.price = this.nigths() * apartment.getPrice();
     }
 
     public Long getId() {
@@ -68,6 +72,10 @@ public class Reservation {
         this.to = to;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
     public Property getApartment() {
         return apartment;
     }
@@ -89,10 +97,6 @@ public class Reservation {
     public int nigths(){
         final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000;
         return (int)((to.getTime() - from.getTime()) / MILLSECS_PER_DAY);
-    }
-
-    public double getPrice(){
-        return this.nigths() * this.getApartment().getPrice();
     }
 
     public Property getProperty(){

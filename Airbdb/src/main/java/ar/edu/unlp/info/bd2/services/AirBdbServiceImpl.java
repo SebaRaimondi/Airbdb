@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 public class AirBdbServiceImpl implements AirBdbService {
@@ -154,5 +155,30 @@ public class AirBdbServiceImpl implements AirBdbService {
     @Transactional
     public List<Reservation> getReservationsInCitiesForUser(String username, String... cities) {
         return repository.getReservationsInCitiesForUser(username, cities);
+    }
+
+    @Transactional
+    public List<City> getCitiesThatHaveReservationsBetween(Date from, Date to) {
+        return repository.getCitiesWithReservationsBetween(from, to);
+    }
+
+    @Transactional
+    public Reservation getMostExpensivePrivateRoomReservation() {
+        return repository.getMostExpensivePrivateRoomReservation();
+    }
+
+    @Transactional
+    public List<String> getHotmailUsersWithAllTheirReservationsFinished() {
+        return repository.getHotmailUsersWithAllTheirReservationsFinished();
+    }
+
+    @Override
+    public Double getTotalRevenueForFinishedReservationsDuringYear(int year) {
+        return repository.getTotalRevenueForFinishedReservationsDuringYear(year);
+    }
+
+    @Override
+    public List<User> getMatchingUsersThatOnlyHaveReservationsInCities(String usernamePart, String... cities) {
+        return repository.getMatchingUsersThatOnlyHaveReservationsInCities(usernamePart, cities);
     }
 }

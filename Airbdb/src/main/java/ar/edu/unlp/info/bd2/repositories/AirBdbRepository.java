@@ -4,15 +4,9 @@ import ar.edu.unlp.info.bd2.model.*;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -228,4 +222,66 @@ public class AirBdbRepository {
     return results;
   }
 
+  public List<City> getCitiesWithReservationsBetween(Date from, Date to) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT DISTINCT r.apartment.city FROM Reservation r WHERE ((:from <= r.from AND r.from <= :to) AND (:from <= r.to AND r.to <= :to))";
+    Query query = session.createQuery(stmt);
+    query.setParameter("from", from);
+    query.setParameter("to", to);
+    List<City> results = query.getResultList();
+
+    System.out.println("!!!! En repository getCitiesWithReservationsBetween devuelvo: " + results);
+    return results;
+  }
+
+  public Reservation getMostExpensivePrivateRoomReservation() {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT r FROM Reservation r ORDER BY r.price DESC";
+    Query query = session.createQuery(stmt).setMaxResults(1);
+    Reservation results = ((Query<Reservation>) query).uniqueResult();
+
+    System.out.println("!!!! En repository getMostExpensivePrivateRoomReservation devuelvo: " + results);
+    return results;
+  }
+  public List<String> getHotmailUsersWithAllTheirReservationsFinished() {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT DISTINCT u.username FROM User u WHERE u.username LIKE '%@hotmail.com' AND NOT EXISTS (SELECT r FROM Reservation r WHERE r.user = u AND r.status != :finished)";
+    Query query = session.createQuery(stmt);
+    query.setParameter("finished", ReservationStatus.FINISHED);
+    List<String> results = query.getResultList();
+
+    System.out.println("!!!! En repository getHotmailUsersWithAllTheirReservationsFinished devuelvo: " + results);
+    return results;
+  }
+
+  public Double getTotalRevenueForFinishedReservationsDuringYear(int year) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT SUM(r.price) FROM Reservation r WHERE YEAR(r.from) = :year AND YEAR(r.to) = :year AND r.status = :finished";
+    Query query = session.createQuery(stmt);
+    query.setParameter("finished", ReservationStatus.FINISHED);
+    query.setParameter("year", year);
+    Double results = ((Query<Double>) query).uniqueResult();
+
+    System.out.println("!!!! En repository getTotalRevenueForFinishedReservationsDuringYear devuelvo: " + results);
+    return results;
+  }
+
+  /**
+   * Devuelve una lista de usuarios que hayan reservado sólo en el conjunto de ciudades cuyos nombres son descriptos en <code>cities</code>
+   * y cuyo username contenga <code>usernamePart</code>
+   * @param usernamePart
+   * @param cities
+   * @return La lista de usuarios que satisfaga los criterios descriptos
+   */
+  public List<User> getMatchingUsersThatOnlyHaveReservationsInCities(String usernamePart, String... cities) {
+    Session session = sessionFactory.getCurrentSession();
+    String stmt = "SELECT u FROM User u WHERE u.username LIKE :username AND NOT EXISTS (SELECT r FROM Reservation r WHERE u = r.user AND r.apartment.city.name NOT IN :cities)";
+    Query query = session.createQuery(stmt);
+    query.setParameter("username", '%' + usernamePart + '%');
+    query.setParameterList("cities", cities);
+    List<User> results = query.getResultList();
+
+    System.out.println("!!!! En repository getMatchingUsersThatOnlyHaveReservationsInCities devuelvo: " + results);
+    return results;
+  }
 }
