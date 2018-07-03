@@ -98,7 +98,7 @@ public class AirBdbRepository {
   /* returns true if a reservation for an apartment can be made in a period, false otherway */
   public boolean isPropertyAvailable(Long id, Date from, Date to) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "FROM Reservation r WHERE r.id = :apartmentId AND r.status <> :canceled AND ((r.from BETWEEN :from AND :to OR r.to BETWEEN :from  AND :to) OR (:from BETWEEN r.from AND r.to OR :to BETWEEN r.from  AND r.to))";
+    String stmt = "FROM Reservation r WHERE r.apartment.id = :apartmentId AND r.status <> :canceled AND ((r.from BETWEEN :from AND :to OR r.to BETWEEN :from  AND :to) OR (:from BETWEEN r.from AND r.to OR :to BETWEEN r.from  AND r.to))";
     Query query = session.createQuery(stmt);
     query.setParameter("apartmentId", id);
     query.setParameter("from", from);
