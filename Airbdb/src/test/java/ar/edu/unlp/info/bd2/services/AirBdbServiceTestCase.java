@@ -2,6 +2,9 @@ package ar.edu.unlp.info.bd2.services;
 
 import ar.edu.unlp.info.bd2.config.AppConfig;
 import ar.edu.unlp.info.bd2.config.HibernateConfiguration;
+import ar.edu.unlp.info.bd2.exceptions.RateException;
+import ar.edu.unlp.info.bd2.exceptions.RepeatedUsernameException;
+import ar.edu.unlp.info.bd2.exceptions.ReservationException;
 import ar.edu.unlp.info.bd2.model.*;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -29,7 +32,7 @@ public class AirBdbServiceTestCase {
   AirBdbService service;
 
   @Test
-  public void testCreateUser() throws RepeatedUsernameException{
+  public void testCreateUser() throws RepeatedUsernameException {
     boolean exceptionThrown = false;
 
     this.service.createUser("user@email.com", "user");

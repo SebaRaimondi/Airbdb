@@ -1,10 +1,11 @@
 package ar.edu.unlp.info.bd2.services;
 
+import ar.edu.unlp.info.bd2.exceptions.RateException;
+import ar.edu.unlp.info.bd2.exceptions.RepeatedUsernameException;
+import ar.edu.unlp.info.bd2.exceptions.ReservationException;
 import ar.edu.unlp.info.bd2.model.*;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-import java.util.List;
 
 public interface AirBdbService extends AirBdbStatisticsService {
 

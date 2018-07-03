@@ -1,5 +1,8 @@
 package ar.edu.unlp.info.bd2.services;
 
+import ar.edu.unlp.info.bd2.exceptions.RateException;
+import ar.edu.unlp.info.bd2.exceptions.RepeatedUsernameException;
+import ar.edu.unlp.info.bd2.exceptions.ReservationException;
 import ar.edu.unlp.info.bd2.model.*;
 import ar.edu.unlp.info.bd2.repositories.AirBdbRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +21,8 @@ public class AirBdbServiceImpl implements AirBdbService {
     /* ------------------------------  ETAPA 1  ------------------------------ */
 
     @Transactional
-    /* creates a new user and returns it. throws UsernameException if the chosen username is already taken */
-    public User createUser(String username, String name) throws RepeatedUsernameException{
+    /* creates a new user and returns it. throws RepeatedUsernameException if the chosen username is already taken */
+    public User createUser(String username, String name) throws RepeatedUsernameException {
         username = username.toLowerCase();
         if (! this.repository.uniqueUsername(username)) throw new RepeatedUsernameException();
         User user = new User (username, name);
@@ -67,7 +70,7 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Transactional
     /* creates a new reservation and returns it */
-    public Reservation createReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException{
+    public Reservation createReservation(long apartmentId, long userId, Date from, Date to) throws ReservationException {
         if (! this.isPropertyAvailable(apartmentId, from, to) ) throw new ReservationException();
         Property apartment = repository.getPropertyById(apartmentId);
         User user = repository.getUserById(userId);
