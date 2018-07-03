@@ -8,13 +8,16 @@ Parte 2
 
 6)
 Busque los departamentos:
+
 - con capacidad para 3 personas.
+
 ```
 > db.apartments.find({capacity: { $eq: 3 }})
 { "_id" : ObjectId("5b3685d9061815b8c9093c43"), "name" : "New Apartment", "capacity" : 3, "services" : [ "wifi", "ac" ] }
 { "_id" : ObjectId("5b36861a061815b8c9093c45"), "name" : "1950s Apartment", "capacity" : 3 }
 ```
 - con capacidad para 4 personas o más
+
 ```
 > db.apartments.find({capacity: { $gte: 4 }})
 { "_id" : ObjectId("5b3683fd061815b8c9093c42"), "name" : "Apartment with 2 bedrooms", "capacity" : 4 }
@@ -22,12 +25,14 @@ Busque los departamentos:
 { "_id" : ObjectId("5b36861d061815b8c9093c46"), "name" : "Duplex Floor", "capacity" : 4, "services" : [ "wifi", "breakfast", "laundry" ] }
 ```
 - con wifi
+
 ```
 > db.apartments.find({services: {$in: ["wifi"]}})
 { "_id" : ObjectId("5b3685d9061815b8c9093c43"), "name" : "New Apartment", "capacity" : 3, "services" : [ "wifi", "ac" ] }
 { "_id" : ObjectId("5b36861d061815b8c9093c46"), "name" : "Duplex Floor", "capacity" : 4, "services" : [ "wifi", "breakfast", "laundry" ] }
 ```
 - que incluyan la palabra ‘Apartment’ en su nombre
+
 ```
 > db.apartments.find({name: {$regex: ".*Apartment.*"}})
 { "_id" : ObjectId("5b3683fd061815b8c9093c42"), "name" : "Apartment with 2 bedrooms", "capacity" : 4 }
@@ -35,11 +40,13 @@ Busque los departamentos:
 { "_id" : ObjectId("5b36861a061815b8c9093c45"), "name" : "1950s Apartment", "capacity" : 3 }
 ```
 - con la palabra ‘Apartment’ en su nombre y capacidad para más de 3 personas
+
 ```
 > db.apartments.find({$and: [{name: {$regex: ".*Apartment.*"}}, {capacity: { $gt: 3 }}]})
 { "_id" : ObjectId("5b3683fd061815b8c9093c42"), "name" : "Apartment with 2 bedrooms", "capacity" : 4 }
 ```
 - sin servicios (es decir, que el atributo esté ausente)
+
 ```
 > db.apartments.find({services: {$exists: false}})
 { "_id" : ObjectId("5b3683fd061815b8c9093c42"), "name" : "Apartment with 2 bedrooms", "capacity" : 4 }
@@ -54,7 +61,7 @@ vuelva a realizar la última consulta pero proyecte sólo el nombre del departam
 { "name" : "1950s Apartment" }
 ```
 
-7. Actualice el “Duplex Floor” asignándole capacidad 5.
+7) Actualice el “Duplex Floor” asignándole capacidad 5.
 ```
 > db.apartments.update(
     { name: { $eq: "Duplex Floor" } },
@@ -64,7 +71,7 @@ vuelva a realizar la última consulta pero proyecte sólo el nombre del departam
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 ```
 
-8. Agregue “laundry” al listado de services del “Nice apt for 6”.
+8) Agregue “laundry” al listado de services del “Nice apt for 6”.
 ```
 > db.apartments.update(
     { name: { $eq: "Nice apt for 6" } },
@@ -74,7 +81,7 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 ```
 
-9. Agregue una persona más de capacidad a todos los departamentos con wifi.
+9) Agregue una persona más de capacidad a todos los departamentos con wifi.
 ```
 > db.apartments.update(
     { services: { $in: [ "wifi" ] } }, 
