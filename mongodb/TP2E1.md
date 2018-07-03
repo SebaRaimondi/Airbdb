@@ -68,7 +68,11 @@ Tipos de índices soportados:
 
 4) ¿Existen claves foráneas en MongoDB?
 
+MongoDB no soporta claves foráneas. Se puede hacer una aproximación al concepto que se ve en esquemas relacionales, armando "a mano" dicha relación, es decir, guardando en un campo de un documento el _id de otro documento como una referencia (siempre y cuando ambos documentos esten en la misma colección). Así, haciendo una segunda consulta se podrá llegar a ese documento. Haciendo ésto queda en nosotros mantener la integridad de la información ya que si por ejemplo se elimina el documento referenciado deberíamos eliminar la referencia a éste en el documento que la tenía. Por lo general suele trabajarse también con un arreglo de referencias para expresar las relaciones muchos a muchos / uno a muchos / muchos a uno.
 
+Otro enfoque, consiste en usar DBRefs, referencias de un documento a otro usando el valor del campo _id del primer documento, el nombre de la colección a la que pertenece, y opcionalmente el nombre de la db. Gracias a éstos valores, DBRefs permiten relacionar documentos que están alocados en diferentes colecciones. 
+
+Recordar siempre podemos desnormalizar el modelo de datos almacenando la información relacionada en un solo documento, aunque a veces tiene más sentido guardar información relacionada en documentos separados, tipicamente en diferentes colecciones o bases de datos.
 
 ------------------------------------------------
 Parte 2
