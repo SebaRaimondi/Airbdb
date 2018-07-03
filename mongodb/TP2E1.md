@@ -104,7 +104,7 @@ db.apartments.remove({})
 load('generador.js')
 ```
 
-10. Busque en la colección de departamentos si existe algún índice definido.
+10) Busque en la colección de departamentos si existe algún índice definido.
 
 ```
 > db.apartments.getIndexes()
@@ -120,7 +120,7 @@ load('generador.js')
 ]
 ```
 
-11. Cree un índice para el campo name. Busque los departamentos que tengan en su nombre el string “11” y utilice el método explain("executionStats") al final de la consulta, para comparar la cantidad de documentos examinados y el tiempo en milisegundos de la consulta con y sin índice.
+11) Cree un índice para el campo name. Busque los departamentos que tengan en su nombre el string “11” y utilice el método explain("executionStats") al final de la consulta, para comparar la cantidad de documentos examinados y el tiempo en milisegundos de la consulta con y sin índice.
 
 ```
 > db.apartments.createIndex( { name: 1 } )
@@ -154,7 +154,7 @@ Con indice
     }
 ```
 
-12. Busque los departamentos dentro de la ciudad de Londres. Para esto, puede obtener el polígono del archivo provisto greaterlondon.geojson y definir una variable en la terminal para facilitar la consulta. Cree un índice geoespacial de tipo 2dsphere para el campo location de la colección apartments y, de la misma forma que en el punto 11, compare la performance de la consulta con y sin dicho índice.
+12) Busque los departamentos dentro de la ciudad de Londres. Para esto, puede obtener el polígono del archivo provisto greaterlondon.geojson y definir una variable en la terminal para facilitar la consulta. Cree un índice geoespacial de tipo 2dsphere para el campo location de la colección apartments y, de la misma forma que en el punto 11, compare la performance de la consulta con y sin dicho índice.
 
 ```
 db.collection.createIndex( { location: "2dsphere" } )
@@ -199,7 +199,7 @@ Parte 4: Aggregation Framework
 
 Al igual que en la parte 3, guarde en un archivo llamado ‘generadorReservas.js’ el siguiente código JavaScript y ejecútelo con la función load()
 
-13. Obtenga 5 departamentos aleatorios de la colección.
+13) Obtenga 5 departamentos aleatorios de la colección.
 ```
 db.apartments.aggregate( [ { $sample: { size: 5 } } ] )
 
@@ -210,7 +210,7 @@ db.apartments.aggregate( [ { $sample: { size: 5 } } ] )
 { "_id" : ObjectId("5b36a02f46aa630b24c290b2"), "name" : "Apartment 4800", "capacity" : 1, "services" : [ "wifi", "parking", "breakfast" ], "location" : { "type" : "Point", "coordinates" : [ -0.3972139932395803, 51.17722096603797 ] } }
 ```
 
-14. Usando el framework de agregación, obtenga los departamentos que estén a 15km (o menos) del centro de la ciudad de Londres ([-0.127718, 51.507451]) y guárdelos en una nueva colección.
+14) Usando el framework de agregación, obtenga los departamentos que estén a 15km (o menos) del centro de la ciudad de Londres ([-0.127718, 51.507451]) y guárdelos en una nueva colección.
 ```
 var query = {
     location: {
@@ -229,7 +229,7 @@ db.apartments.find( query )
 // Cantidad de resultados: 5984
 ```
 
-15. Para los departamentos hallados en el punto anterior, obtener una colección con cada departamento agregando un atributo reservas que contenga un array con todas sus reservas.
+15) Para los departamentos hallados en el punto anterior, obtener una colección con cada departamento agregando un atributo reservas que contenga un array con todas sus reservas.
 Note que sólo es posible ligarlas por el nombre del departamento.
 
 ▶︎ Si la consulta se empieza a tornar difícil de leer, se pueden ir guardando los agregadores en variables, que no son más que objetos en formato JSON.
@@ -315,7 +315,7 @@ db.apartments.aggregate( query ).pretty()
 }
 ```
 
-16. Usando la colección del punto anterior, obtenga el promedio de precio pagado por reserva (precio completo, no dividir por la cantidad de noches) de cada departamento.
+16) Usando la colección del punto anterior, obtenga el promedio de precio pagado por reserva (precio completo, no dividir por la cantidad de noches) de cada departamento.
 
 ```
 // Aclaracion, dejo solo los que tienen apartments que tienen reservas porque si no tiene ninguna quedan con null. Lo saco en el stage $unwind, en la linea preserveNullAndEmptyArrays: false
