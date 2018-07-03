@@ -1,3 +1,76 @@
+Parte 1: Bases de Datos NoSQL Y Relacionales
+
+▶︎ Si bien las BBDD NoSQL tienen diferencias fundamentales con los sistemas de BBDD
+Relacionales o RDBMS, algunos conceptos comunes se pueden relacionar. Responda las
+siguientes preguntas, considerando MongoDB en particular como Base de Datos NoSQL.
+
+1) ¿Cuáles de los siguientes conceptos de RDBMS existen en MongoDB? En caso de no existir,
+¿hay alguna alternativa? ¿Cuál es?
+• Base de Datos
+• Tabla / Relación
+• Fila / Tupla
+• Columna
+
+En MongoDB, existe el concepto de *Base de Datos*, considerando presenta algunas diferencias con respecto al mismo en esquemas relacionales. Se explicará a continuación.
+
+El término *Tabla* o *Relación* no existe. Hablamos más bien de *Colecciones*.
+
+No hay *Filas* o *Tuplas*, sino *Documentos*.
+
+No hablamos de *Columnas*; más bien hablamos de *Campos*.
+
+MongoDB guarda la estructura de los datos de una base de datos particular en documentos tipo JSON con un esquema dinámico llamado BSON, lo que implica que no existe un esquema predefinido. 
+
+Los elementos de los datos se denominan documentos y se guardan en colecciones. 
+
+Una colección puede tener un número indeterminado de documentos. 
+
+Mientras que en una base de datos relacional cada registro en una tabla tiene la misma cantidad de campos, en MongoDB cada documento en una colección puede tener diferentes campos. En un documento, se pueden agregar, eliminar, modificar o renombrar nuevos campos en cualquier momento,​ ya que no hay un esquema predefinido. 
+
+La estructura de un documento es simple y está compuesta por pares clave/valor, debido a que como dijimos MongoDB sigue el formato de JSON. La clave es el nombre del campo y el valor es su contenido, los cuales se separan mediante el uso de “:”. Como valor se pueden usar números, cadenas o datos binarios como imágenes o cualquier otro.
+
+2) MongoDB tiene soporte para transacciones, pero no es igual que el de los RDBMS. ¿Cuál es
+el alcance de una transacción en MongoDB?
+
+En MongoDB una operacion en un solo documento es atómica. Debido al hecho de que se pueden utilizar documentos y arreglos embebidos para representar las relaciones entre datos en un solo documento en vez de normalizar entre muchos documentos y colecciones, esta atomicidad dentro de un solo documento elimina la necesidad del uso de transacciones para muchos casos de uso. Es por ésto que hasta hace poco MongoDB no soportaba transacciones multidocumento.
+
+Para permitir a los desarrolladores abarcar facilmente el espectro completo de casos de usos, con la version 4.0 de MongoDB, se agregaron las transacciones para respetar ACID en la actualización de múltiples colecciones las cuales pueden estar en diferentes bases de datos. A traves de _snapshot isolation_, las transacciones proveen una vista consistente de los datos y permiten una ejecución de "todo o nada" para mantener integridad. En MongoDB 4.0, las transacciones funcionan sólo para los  _replica sets_. Un _replica set_ es un grupo de procesos mongod que utilizan y mantienen los mismos grupos de datos. Así, se provee alta disponibilidad y balance de carga. 
+
+El manejo en cuanto a sintaxis en codigo es muy similar al de transacciones en esquemas relacionales.
+
+Se estima que próximamente se soportaran transacciones multidocumento también en _sharded clusters_ (refiere al hecho de tener los datos en diferentes servidores).
+
+3) Para acelerar las consultas, MongoDB tiene soporte para índices. ¿Qué tipos de índices
+soporta?
+
+Un índice es una estructura de datos especial que guarda una pequeña porción de datos ordenados por el valor de algun campo según se especifique. Como bien se dijo, los índices permiten la resolución de queries de forma eficiente ya que sin ellos, MongoDB debería analizar todos los documentos de una coleccion para seleccionar aquellos que coincidan con la consulta (más aún si se busca por algún campo cuyo valor puede repetirse en distintos documentos).
+
+Tipos de índices soportados:
+
+* De un solo campo
+    * Se crean de la forma `db.records.createIndex( { <field>: < 1 or -1 > } )`. Se puede optar por el valor 1, lo que implica ordenar los items en orden ascendente, o bien por el valor -1, indicando ordenar de forma descendente.
+
+* De múltiples campos
+    * Con éstos una sola estructura de indices mantiene referencias a múltiples campos de los documentos de una colección. Así, se soportan consultas que matchean múltiples campos. MongoDB impone un limite de 31 campos para todo indice compuesto. Forma de crearlos: `db.collection.createIndex( { <field1>: <type>, <field2>: <type2>, ... } )`. Notar debemos especificar 1 o -1. El orden de los campos es importante ya que determina por cual se ordena primero y por cual se ordena luego. No se puede poner tipo hash.
+    
+* Multiclave
+    * Se utiliza para indexar el contenido de arreglos almacenados. Si indexas un campo que tiene como valor un arreglo, MongoDB crea a parte una entrada separada de indice para cada elemento del arreglo. Así permiten a las consultas seleccionar documentos que contienen un arreglo y coinciden en ciertos elementos. 
+
+* Geoespacial
+    * Soportan consultas eficientes acerca de datos de coordenadas geoespaciales. Hay dos índices especiales: índices 2d que usan geometria plana al retornar resultados, y los índices 2dsphere que usan geometria esféria para  devolver resultados.
+
+* Texto
+    * Se usa para soportar búsqueda por algún _string_ en una colección. Una colección puede tener como mucho un índice tipo texto. Ejemplo: `db.reviews.createIndex( { <field1>: "text" } )`, donde <field1> es un campo que tiene un sring o un array de strings. Hay muchas opciones que se pueden especificar, como por ejemplo case insensitive, wildcards, etc.
+
+* Hasheado
+    * Permite indexar el valor hasheado de un campo. Tienen una distribución más random de valores a lo largo del rango pero solo soportan consultas que checkean coincidencia de igualdad y no queries basadas en rangos.
+
+
+4) ¿Existen claves foráneas en MongoDB?
+
+
+
+------------------------------------------------
 Parte 2
 
 5) 
