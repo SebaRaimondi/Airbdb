@@ -76,7 +76,9 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Override
     public List<Reservation> getReservationsForProperty(String propertyId) {
-        return repository.getReservationsForProperty(propertyId);
+        //  Cualquiera de las siguientes dos funciona
+        //  return repository.getReservationsForProperty(propertyId);
+        return repository.getPropertyById(propertyId).getReservations();
     }
 
     @Override
