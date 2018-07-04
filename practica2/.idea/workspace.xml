@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c6167d3-94e0-445c-be39-1b1d81ccb472" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../practica1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../practica1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/AirBdbRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/AirBdbRepository.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,8 +26,8 @@
       <file leaf-file-name="AirBdbRepository.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/AirBdbRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="121" column="41" selection-start-line="121" selection-start-column="41" selection-end-line="121" selection-end-column="41" />
+            <state relative-caret-position="648">
+              <caret line="117" column="96" lean-forward="true" selection-start-line="117" selection-start-column="96" selection-end-line="117" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -543,9 +541,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AirBdbServiceUnitTest_testGetReservationCountByCity - 2018.07.04 at 17h 34m 42s.xml">
-      <configuration name="AirBdbServiceUnitTest.testGetReservationCountByCity" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AirBdbServiceUnitTest_testGetReservationCountByCity - 2018.07.04 at 17h 39m 49s.xml">
       <configuration name="AirBdbServiceUnitTest.testGetReservationCountByCity" configurationId="JUnit" />
     </history-entry>
@@ -573,10 +568,12 @@
     <history-entry file="AirBdbServiceUnitTest - 2018.07.04 at 18h 59m 38s.xml">
       <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AirBdbServiceUnitTest - 2018.07.04 at 19h 00m 32s.xml">
+      <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="4" />
@@ -587,7 +584,7 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32912722" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.39747635" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.39747635" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
@@ -969,8 +966,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/AirBdbRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="121" column="41" selection-start-line="121" selection-start-column="41" selection-end-line="121" selection-end-column="41" />
+        <state relative-caret-position="648">
+          <caret line="117" column="96" lean-forward="true" selection-start-line="117" selection-start-column="96" selection-end-line="117" selection-end-column="96" />
         </state>
       </provider>
     </entry>
