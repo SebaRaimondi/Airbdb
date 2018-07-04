@@ -11,11 +11,20 @@ public class AirBdbRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
+
+
+    public MongoTemplate getMongoTemplate() {
+        return mongoTemplate;
+    }
+
+    public void setMongoTemplate(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+
     public User createUser(User user){
         mongoTemplate.save(user, "user");
         return user;
     }
-
 
     /* returns true if a given username isnt used yet  */
     public boolean uniqueUsername(String username){
@@ -24,5 +33,7 @@ public class AirBdbRepository {
         return user == null;
     }
 
-
+    public void clearDb() {
+        mongoTemplate.getDb().drop();
+    }
 }

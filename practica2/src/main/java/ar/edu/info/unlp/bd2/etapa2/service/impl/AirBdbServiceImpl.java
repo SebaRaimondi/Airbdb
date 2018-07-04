@@ -19,4 +19,8 @@ public class AirBdbServiceImpl implements AirBdbService {
         User user = new User (username, name);
         return repository.createUser(user);
     }
+
+    public void clearDb() {
+        repository.clearDb();
+    }
 }
