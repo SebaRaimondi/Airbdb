@@ -4,14 +4,18 @@ import ar.edu.info.unlp.bd2.etapa2.model.City;
 import ar.edu.info.unlp.bd2.etapa2.model.Property;
 import ar.edu.info.unlp.bd2.etapa2.model.Reservation;
 import ar.edu.info.unlp.bd2.etapa2.model.User;
+import ar.edu.info.unlp.bd2.etapa2.utils.ReservationCount;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.Date;
 import java.util.List;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 public class AirBdbRepository {
 
@@ -87,4 +91,26 @@ public class AirBdbRepository {
         return user;
     }
 
+    // usar aggregation
+    public List<ReservationCount> getReservationCountByStatus(){
+        GroupOperation groupByStatusAndSumCount = group("status")
+                .count().as("count");
+
+        ProjectionOperation projectToMatchModel = project("status");
+
+        Aggregation aggregation = newAggregation(projectToMatchModel, groupByStatusAndSumCount);
+
+        AggregationResults<ReservationCount> result = mongoTemplate.aggregate(
+                aggregation, "ReservationCount", ReservationCount.class);
+
+        List<ReservationCount> final_result = result.getMappedResults();
+
+        System.out.println("!!!!!!!!!!!!!!!! partial result ");
+        for (ReservationCount rc : result) {
+            System.out.println("rc status " + rc.getStatus() + " ||| rc count " + rc.getCount());
+        }
+        System.out.println( "!!!!!!!!!!!!!!!! final result " + final_result);
+
+        return final_result;
+    }
 }

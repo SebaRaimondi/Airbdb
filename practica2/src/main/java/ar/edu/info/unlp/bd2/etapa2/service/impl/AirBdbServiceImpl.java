@@ -106,6 +106,6 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Override
     public List<ReservationCount> getReservationCountByStatus() {
-        return null;
+        return repository.getReservationCountByStatus();
     }
 }
