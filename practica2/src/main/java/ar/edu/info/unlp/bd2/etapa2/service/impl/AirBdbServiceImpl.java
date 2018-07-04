@@ -41,15 +41,14 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     /* creates a new user and returns it. Throws RepeatedUsernameException if the chosen username is already taken */
     public User createUser(String username, String name) throws RepeatedUsernameException {
-        username = username.toLowerCase();
-        if (! this.repository.uniqueUsername(username)) throw new RepeatedUsernameException();
+        if (!repository.uniqueUsername(username)) throw new RepeatedUsernameException();
         User user = new User (username, name);
         return repository.createUser(user);
     }
 
     @Override
-    public User getUserByUsername(String email) {
-        return null;
+    public User getUserByUsername(String username) {
+        return repository.getUserByUsername(username);
     }
 
     @Override
