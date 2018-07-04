@@ -94,14 +94,20 @@ public class AirBdbRepository {
     // usar aggregation
     public List<ReservationCount> getReservationCountByStatus(){
         GroupOperation groupByStatusAndSumCount = group("status")
-                .count().as("count");
+                .count().as("count").first("status").as("status");
 
         ProjectionOperation projectToMatchModel = project("status");
 
         Aggregation aggregation = newAggregation(projectToMatchModel, groupByStatusAndSumCount);
 
-        AggregationResults<ReservationCount> result = mongoTemplate.aggregate(
+        AggregationResults<ReservationCount> results = mongoTemplate.aggregate(
+                aggregation, Reservation.class, ReservationCount.class
+        );
+
+/*        AggregationResults<ReservationCount> result = mongoTemplate.aggregate(
                 aggregation, "ReservationCount", ReservationCount.class);
+
+        System.out.println("!!!!!!!!!!!!!!!! Aggregation: " + results.getMappedResults().iterator().next().getStatus() + " coutn: " + results.getMappedResults().iterator().next().getCount());
 
         List<ReservationCount> final_result = result.getMappedResults();
 
@@ -112,5 +118,7 @@ public class AirBdbRepository {
         System.out.println( "!!!!!!!!!!!!!!!! final result " + final_result);
 
         return final_result;
+        */
+        return results.getMappedResults();
     }
 }
