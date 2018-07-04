@@ -1,17 +1,23 @@
 package ar.edu.info.unlp.bd2.etapa2.service.impl;
 
 import ar.edu.info.unlp.bd2.etapa2.repository.AirBdbRepository;
+import ar.edu.info.unlp.bd2.etapa2.repository.CityRepository;
 import ar.edu.info.unlp.bd2.etapa2.service.AirBdbService;
 import ar.edu.info.unlp.bd2.etapa2.model.*;
 import ar.edu.info.unlp.bd2.etapa2.model.Reservation.ReservationStatus;
 import ar.edu.info.unlp.bd2.etapa2.exceptions.*;
 import ar.edu.info.unlp.bd2.etapa2.utils.ReservationCount;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 public class AirBdbServiceImpl implements AirBdbService {
     private AirBdbRepository repository;
+
+    @Autowired
+    CityRepository cityRepo;
 
     public void clearDb() {
         repository.clearDb();
@@ -81,19 +87,21 @@ public class AirBdbServiceImpl implements AirBdbService {
         return repository.getPropertyById(propertyId).getReservations();
     }
 
-    @Override
-    public List<City> getCitiesMatching(String content) {
-        return null;
-    }
 
     @Override
     public City registerCity(String name) {
-        return null;
+        City city = new City(name);
+        return cityRepo.insert(city);
+    }
+
+    @Override
+    public List<City> getCitiesMatching(String content) {
+        return cityRepo.findByNameLikeOrderByNameAsc(content);
     }
 
     @Override
     public List<City> getAllCities() {
-        return null;
+        return cityRepo.findAll();
     }
 
     @Override
