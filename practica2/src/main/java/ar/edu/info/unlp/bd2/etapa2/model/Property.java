@@ -8,7 +8,7 @@ import java.util.List;
 @Document(collection = "properties")
 public class Property {
     @Id
-    protected Long id;
+    protected String id;
 
     protected String name;
     protected String description;
@@ -29,11 +29,11 @@ public class Property {
         this.city = city;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

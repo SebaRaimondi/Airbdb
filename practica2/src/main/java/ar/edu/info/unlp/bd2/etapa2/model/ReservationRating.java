@@ -8,7 +8,7 @@ import java.util.Objects;
 @Document(collection = "ratings")
 public class ReservationRating {
     @Id
-    private Long id;
+    private String id;
 
     private int points;
     private String comment;
@@ -24,7 +24,7 @@ public class ReservationRating {
         this.setReservation(reservation);
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

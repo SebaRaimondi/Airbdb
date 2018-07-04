@@ -8,16 +8,20 @@ import java.util.Date;
 @Document(collection = "reservations")
 public class Reservation {
     @Id
-    private Long id;
+    private String id;
 
     private Date from;
     private Date to;
     private double price;
-    private String status;
+    private ReservationStatus status;
 
     private Property property;
     private User user;
     private ReservationRating rating;
+
+    public enum ReservationStatus {
+        CONFIRMATION_PENDING, CONFIRMED, FINISHED,
+    }
 
     public Reservation() {
     }
@@ -27,15 +31,15 @@ public class Reservation {
         this.to = to;
         this.setProperty(property);
         this.setUser(user);
-        this.status = ReservationStatus.UNCONFIRMED;
+        this.status = ReservationStatus.CONFIRMATION_PENDING;
         this.price = this.nigths() * property.getPrice();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,7 +63,7 @@ public class Reservation {
         return price;
     }
 
-    public String getStatus() {
+    public ReservationStatus getStatus() {
         return status;
     }
 
@@ -89,8 +93,8 @@ public class Reservation {
         this.rating = rating;
     }
 
-    public void cancelReservation() {
-        this.status = ReservationStatus.CANCELED;
+    public void confirmReservation() {
+        this.status = ReservationStatus.CONFIRMED;
     }
 
     public void finishReservation() {
