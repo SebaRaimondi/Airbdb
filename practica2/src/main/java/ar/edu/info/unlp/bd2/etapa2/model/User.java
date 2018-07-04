@@ -1,12 +1,14 @@
 package ar.edu.info.unlp.bd2.etapa2.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Document(collection="User")
+@Document
 public class User {
 
     @Id
@@ -15,6 +17,7 @@ public class User {
     private String username;
     private String name;
 
+    @DBRef
     private List<Reservation> reservations;
 
     public User() { }
@@ -22,6 +25,7 @@ public class User {
     public User(String username, String name) {
         this.username = username;
         this.name = name;
+        this.reservations = new ArrayList<Reservation>();
     }
 
     public String getId() {

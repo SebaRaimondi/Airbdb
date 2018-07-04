@@ -19,12 +19,20 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Override
     public Reservation createReservation(String propertyId, String userId, Date from, Date to, ReservationStatus initialStatus) throws ReservationException {
-        return null;
+        if (!repository.isPropertyAvailable(propertyId, from, to) ) throw new ReservationException();
+        Property property = repository.getPropertyById(propertyId);
+        User user = repository.getUserById(userId);
+        Reservation reservation = new Reservation(property, user, from, to, initialStatus);
+        System.out.println("!--------------------- property");
+        reservation = repository.insert(reservation);
+        repository.save(user);
+        repository.save(property);
+        return reservation;
     }
 
     @Override
     public User getUserById(String id) {
-        return null;
+        return repository.getUserById(id);
     }
 
     public AirBdbRepository getRepository() {
@@ -43,7 +51,7 @@ public class AirBdbServiceImpl implements AirBdbService {
     public User createUser(String username, String name) throws RepeatedUsernameException {
         if (!repository.uniqueUsername(username)) throw new RepeatedUsernameException();
         User user = new User (username, name);
-        return repository.createUser(user);
+        return repository.insert(user);
     }
 
     @Override
@@ -53,17 +61,23 @@ public class AirBdbServiceImpl implements AirBdbService {
 
     @Override
     public Property createProperty(String name, String description, double price, int capacity, int rooms, String cityName) {
-        return null;
+        City city = repository.getCityByName(cityName);
+        if (city == null){
+            city = new City(cityName);
+            repository.insert(city);
+        }
+        Property property = new Property(name, description, price, capacity, city);
+        return repository.insert(property);
     }
 
     @Override
     public City getCityByName(String name) {
-        return null;
+        return repository.getCityByName(name);
     }
 
     @Override
     public List<Reservation> getReservationsForProperty(String propertyId) {
-        return null;
+        return repository.getReservationsForProperty(propertyId);
     }
 
     @Override

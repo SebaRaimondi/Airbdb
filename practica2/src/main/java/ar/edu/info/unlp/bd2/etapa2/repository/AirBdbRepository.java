@@ -1,11 +1,16 @@
 package ar.edu.info.unlp.bd2.etapa2.repository;
 
+import ar.edu.info.unlp.bd2.etapa2.model.City;
+import ar.edu.info.unlp.bd2.etapa2.model.Property;
+import ar.edu.info.unlp.bd2.etapa2.model.Reservation;
 import ar.edu.info.unlp.bd2.etapa2.model.User;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public class AirBdbRepository {
@@ -25,9 +30,14 @@ public class AirBdbRepository {
         mongoTemplate.getDb().drop();
     }
 
-    public User createUser(User user){
-        mongoTemplate.insert(user);
-        return user;
+    public <T> T insert(T entity) {
+        mongoTemplate.insert(entity);
+        return entity;
+    }
+
+    public <T> T save(T entity) {
+        mongoTemplate.save(entity);
+        return entity;
     }
 
     /* returns true if a given username isnt used yet  */
@@ -35,7 +45,6 @@ public class AirBdbRepository {
         Query query = new Query();
         query.addCriteria(Criteria.where("username").is(username));
         List<User> users = mongoTemplate.find(query, User.class);
-        System.out.println("!!!! En repository uniqueUsername encuentra " + users);
         return users.isEmpty();
     }
 
@@ -45,4 +54,39 @@ public class AirBdbRepository {
         User users = mongoTemplate.findOne(query, User.class);
         return users;
     }
+
+    public City getCityByName(String name) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("name").is(name));
+        City city = mongoTemplate.findOne(query, City.class);
+        return city;
+    }
+
+    public List<Reservation> getReservationsForProperty(String propertyId) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("property.$id").is(new ObjectId(propertyId)));
+        List<Reservation> reservations = mongoTemplate.find(query, Reservation.class);
+        return reservations;
+    }
+
+    public boolean isPropertyAvailable(String propertyId, Date from, Date to) {
+        Query query = new Query();
+        query.addCriteria(
+                Criteria.where("from").gte(from).lt(to).orOperator(
+                Criteria.where("to").gte(from).lt(to)
+        ));
+        query.addCriteria(Criteria.where("property.$id").is(new ObjectId(propertyId)));
+        List<Reservation> properties = mongoTemplate.find(query, Reservation.class);
+        return properties.isEmpty();
+    }
+
+    public Property getPropertyById(String propertyId) {
+        return mongoTemplate.findById(propertyId, Property.class);
+    }
+
+    public User getUserById(String userId) {
+        User user = mongoTemplate.findById(userId, User.class);
+        return user;
+    }
+
 }

@@ -1,11 +1,12 @@
 package ar.edu.info.unlp.bd2.etapa2.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document(collection = "reservations")
+@Document
 public class Reservation {
     @Id
     private String id;
@@ -15,8 +16,11 @@ public class Reservation {
     private double price;
     private ReservationStatus status;
 
+    @DBRef
     private Property property;
+    @DBRef
     private User user;
+    @DBRef
     private ReservationRating rating;
 
     public enum ReservationStatus {
@@ -27,11 +31,15 @@ public class Reservation {
     }
 
     public Reservation(Property property, User user, Date from, Date to ) {
+        this(property, user, from, to, ReservationStatus.CONFIRMATION_PENDING);
+    }
+
+    public Reservation(Property property, User user, Date from, Date to, ReservationStatus initialStatus ) {
         this.from = from;
         this.to = to;
         this.setProperty(property);
         this.setUser(user);
-        this.status = ReservationStatus.CONFIRMATION_PENDING;
+        this.status = initialStatus;
         this.price = this.nigths() * property.getPrice();
     }
 
@@ -63,8 +71,16 @@ public class Reservation {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public ReservationStatus getStatus() {
         return status;
+    }
+
+    public void setStatus(ReservationStatus status) {
+        this.status = status;
     }
 
     public Property getProperty() {
@@ -104,5 +120,19 @@ public class Reservation {
     private int nigths(){
         final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000;
         return (int)((to.getTime() - from.getTime()) / MILLSECS_PER_DAY);
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id='" + id + '\'' +
+                ", from=" + from +
+                ", to=" + to +
+                ", price=" + price +
+                ", status=" + status +
+                ", property=" + property.getId() +
+                ", user=" + user.getId() +
+                ", rating=" + rating +
+                '}';
     }
 }

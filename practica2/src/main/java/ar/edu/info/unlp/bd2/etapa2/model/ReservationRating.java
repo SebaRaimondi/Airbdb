@@ -1,11 +1,12 @@
 package ar.edu.info.unlp.bd2.etapa2.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
-@Document(collection = "ratings")
+@Document
 public class ReservationRating {
     @Id
     private String id;
@@ -13,6 +14,7 @@ public class ReservationRating {
     private int points;
     private String comment;
 
+    @DBRef
     private Reservation reservation;
 
     public ReservationRating() {
@@ -21,7 +23,7 @@ public class ReservationRating {
     public ReservationRating(int points, String comment, Reservation reservation) {
         this.points = points;
         this.comment = comment;
-        this.setReservation(reservation);
+        this.reservation = reservation;
     }
 
     public String getId() {
@@ -65,10 +67,5 @@ public class ReservationRating {
                 ", comment='" + comment + '\'' +
                 ", reservation=" + reservation +
                 '}';
-    }
-
-    private void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-        reservation.setRating(this);
     }
 }

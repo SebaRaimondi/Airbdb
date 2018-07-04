@@ -1,7 +1,6 @@
 package ar.edu.info.unlp.bd2.etapa2.model;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Apartment extends Property {
     private int rooms;
@@ -25,28 +24,14 @@ public class Apartment extends Property {
     @Override
     public String toString() {
         return "Apartment{" +
-                "id=" + id +
+                "rooms=" + rooms +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", capacity=" + capacity +
-                ", rooms=" + rooms +
-                ", city=" + city +
+                ", city='" + city + '\'' +
                 ", reservations=" + reservations +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Apartment)) return false;
-        Apartment apartment = (Apartment) o;
-        return getRooms() == apartment.getRooms();
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getRooms());
     }
 }

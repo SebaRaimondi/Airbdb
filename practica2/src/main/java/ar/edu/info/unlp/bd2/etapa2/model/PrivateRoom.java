@@ -22,13 +22,13 @@ public class PrivateRoom extends Property {
     @Override
     public String toString() {
         return "PrivateRoom{" +
-                "id=" + id +
+                "beds=" + beds +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", capacity=" + capacity +
-                ", beds=" + beds +
-                ", city=" + city +
+                ", city='" + city + '\'' +
                 ", reservations=" + reservations +
                 '}';
     }

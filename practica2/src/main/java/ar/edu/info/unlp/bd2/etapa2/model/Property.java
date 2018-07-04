@@ -1,21 +1,24 @@
 package ar.edu.info.unlp.bd2.etapa2.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "properties")
+@Document
 public class Property {
     @Id
     protected String id;
-
     protected String name;
     protected String description;
     protected double price;
     protected int capacity;
 
+    @DBRef
     protected City city;
+    @DBRef
     protected List<Reservation> reservations;
 
     public Property() {
@@ -27,6 +30,7 @@ public class Property {
         this.price = price;
         this.capacity = capacity;
         this.city = city;
+        this.reservations = new ArrayList<Reservation>();
     }
 
     public String getId() {
