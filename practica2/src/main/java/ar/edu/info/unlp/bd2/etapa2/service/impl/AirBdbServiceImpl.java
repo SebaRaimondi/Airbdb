@@ -23,10 +23,9 @@ public class AirBdbServiceImpl implements AirBdbService {
         Property property = repository.getPropertyById(propertyId);
         User user = repository.getUserById(userId);
         Reservation reservation = new Reservation(property, user, from, to, initialStatus);
-        System.out.println("!--------------------- property");
         reservation = repository.insert(reservation);
-        repository.save(user);
-        repository.save(property);
+        user = repository.save(user);
+        property = repository.save(property);
         return reservation;
     }
 

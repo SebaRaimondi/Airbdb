@@ -70,11 +70,9 @@ public class AirBdbRepository {
     }
 
     public boolean isPropertyAvailable(String propertyId, Date from, Date to) {
-        Query query = new Query();
-        query.addCriteria(
-                Criteria.where("from").gte(from).lt(to).orOperator(
-                Criteria.where("to").gte(from).lt(to)
-        ));
+        Criteria criteria1 = Criteria.where("from").gte(from).lt(to);
+        Criteria criteria2 = Criteria.where("to").gte(from).lt(to);
+        Query query = new Query(new Criteria().orOperator(criteria1, criteria2));
         query.addCriteria(Criteria.where("property.$id").is(new ObjectId(propertyId)));
         List<Reservation> properties = mongoTemplate.find(query, Reservation.class);
         return properties.isEmpty();
