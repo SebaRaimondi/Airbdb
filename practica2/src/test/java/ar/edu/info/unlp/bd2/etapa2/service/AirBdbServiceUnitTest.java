@@ -3,7 +3,6 @@ package ar.edu.info.unlp.bd2.etapa2.service;
 import ar.edu.info.unlp.bd2.etapa2.config.ApplicationConfiguration;
 import ar.edu.info.unlp.bd2.etapa2.config.MongoConfiguration;
 import ar.edu.info.unlp.bd2.etapa2.model.*;
-import ar.edu.info.unlp.bd2.etapa2.model.Reservation.ReservationStatus;
 import ar.edu.info.unlp.bd2.etapa2.exceptions.*;
 import ar.edu.info.unlp.bd2.etapa2.utils.ReservationCount;
 import org.joda.time.DateTime;

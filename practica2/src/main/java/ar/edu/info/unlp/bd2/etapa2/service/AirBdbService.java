@@ -1,7 +1,6 @@
 package ar.edu.info.unlp.bd2.etapa2.service;
 
 import ar.edu.info.unlp.bd2.etapa2.model.*;
-import ar.edu.info.unlp.bd2.etapa2.model.Reservation.ReservationStatus;
 import ar.edu.info.unlp.bd2.etapa2.exceptions.*;
 import ar.edu.info.unlp.bd2.etapa2.utils.ReservationCount;
 

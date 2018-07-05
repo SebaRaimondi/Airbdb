@@ -23,10 +23,6 @@ public class Reservation {
     @DBRef
     private ReservationRating rating;
 
-    public enum ReservationStatus {
-        CONFIRMATION_PENDING, CONFIRMED, FINISHED,
-    }
-
     public Reservation() {
     }
 

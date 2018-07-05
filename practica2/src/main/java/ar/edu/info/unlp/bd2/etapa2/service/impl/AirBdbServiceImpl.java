@@ -4,7 +4,6 @@ import ar.edu.info.unlp.bd2.etapa2.repository.AirBdbRepository;
 import ar.edu.info.unlp.bd2.etapa2.repository.CityRepository;
 import ar.edu.info.unlp.bd2.etapa2.service.AirBdbService;
 import ar.edu.info.unlp.bd2.etapa2.model.*;
-import ar.edu.info.unlp.bd2.etapa2.model.Reservation.ReservationStatus;
 import ar.edu.info.unlp.bd2.etapa2.exceptions.*;
 import ar.edu.info.unlp.bd2.etapa2.utils.ReservationCount;
 import org.springframework.beans.factory.annotation.Autowired;

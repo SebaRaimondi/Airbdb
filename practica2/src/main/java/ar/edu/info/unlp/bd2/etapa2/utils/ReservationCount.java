@@ -1,6 +1,6 @@
 package ar.edu.info.unlp.bd2.etapa2.utils;
 
-import ar.edu.info.unlp.bd2.etapa2.model.Reservation.ReservationStatus;
+import ar.edu.info.unlp.bd2.etapa2.model.ReservationStatus;
 
 public class ReservationCount {
 
