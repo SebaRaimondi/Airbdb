@@ -25,7 +25,7 @@ Los elementos de los datos se denominan documentos y se guardan en colecciones.
 
 Una colección puede tener un número indeterminado de documentos. 
 
-Mientras que en una base de datos relacional cada registro en una tabla tiene la misma cantidad de campos, en MongoDB cada documento en una colección puede tener diferentes campos. En un documento, se pueden agregar, eliminar, modificar o renombrar nuevos campos en cualquier momento,​ ya que no hay un esquema predefinido. 
+Mientras que en una base de datos relacional cada registro en una tabla que tiene la misma cantidad de atributos, en MongoDB cada documento en una colección puede tener diferentes campos. En un documento, se pueden agregar, eliminar, modificar o renombrar nuevos campos en cualquier momento,​ ya que no hay un esquema predefinido. 
 
 La estructura de un documento es simple y está compuesta por pares clave/valor, debido a que como dijimos MongoDB sigue el formato de JSON. La clave es el nombre del campo y el valor es su contenido, los cuales se separan mediante el uso de “:”. Como valor se pueden usar números, cadenas o datos binarios como imágenes o cualquier otro.
 
@@ -54,7 +54,7 @@ Tipos de índices soportados:
     * Con éstos una sola estructura de indices mantiene referencias a múltiples campos de los documentos de una colección. Así, se soportan consultas que matchean múltiples campos. MongoDB impone un limite de 31 campos para todo indice compuesto. Forma de crearlos: `db.collection.createIndex( { <field1>: <type>, <field2>: <type2>, ... } )`. Notar debemos especificar 1 o -1. El orden de los campos es importante ya que determina por cual se ordena primero y por cual se ordena luego. No se puede poner tipo hash.
     
 * Multiclave
-    * Se utiliza para indexar el contenido de arreglos almacenados. Si indexas un campo que tiene como valor un arreglo, MongoDB crea a parte una entrada separada de indice para cada elemento del arreglo. Así permiten a las consultas seleccionar documentos que contienen un arreglo y coinciden en ciertos elementos. 
+    * Se utiliza para indexar el contenido de arreglos almacenados. Si indexas un campo que tiene como valor un arreglo, MongoDB crea a parte una entrada separada de indice para cada elemento del arreglo. Así permiten a las consultas seleccionar documentos que contienen un arreglo y coinciden en ciertos elementos del mismo. 
 
 * Geoespacial
     * Soportan consultas eficientes acerca de datos de coordenadas geoespaciales. Hay dos índices especiales: índices 2d que usan geometria plana al retornar resultados, y los índices 2dsphere que usan geometria esféria para  devolver resultados.
@@ -70,9 +70,9 @@ Tipos de índices soportados:
 
 MongoDB no soporta claves foráneas. Se puede hacer una aproximación al concepto que se ve en esquemas relacionales, armando "a mano" dicha relación, es decir, guardando en un campo de un documento el _id de otro documento como una referencia (siempre y cuando ambos documentos esten en la misma colección). Así, haciendo una segunda consulta se podrá llegar a ese documento. Haciendo ésto queda en nosotros mantener la integridad de la información ya que si por ejemplo se elimina el documento referenciado deberíamos eliminar la referencia a éste en el documento que la tenía. Por lo general suele trabajarse también con un arreglo de referencias para expresar las relaciones muchos a muchos / uno a muchos / muchos a uno.
 
-Otro enfoque, consiste en usar DBRefs, referencias de un documento a otro usando el valor del campo _id del primer documento, el nombre de la colección a la que pertenece, y opcionalmente el nombre de la db. Gracias a éstos valores, DBRefs permiten relacionar documentos que están alocados en diferentes colecciones. 
+Otro enfoque, consiste en usar DBRefs: se referencian documentos usando el valor del campo _id del mismo, el nombre de la colección a la que pertenece, y opcionalmente el nombre de la db. Gracias a éstos valores, DBRefs permiten relacionar documentos que están alocados en diferentes colecciones. 
 
-Recordar siempre podemos desnormalizar el modelo de datos almacenando la información relacionada en un solo documento, aunque a veces tiene más sentido guardar información relacionada en documentos separados, tipicamente en diferentes colecciones o bases de datos.
+Recordar siempre podemos desnormalizar el modelo de datos almacenando la información relacionada en un solo documento, aunque a veces tiene más sentido guardar información en documentos separados, tipicamente en diferentes colecciones o bases de datos.
 
 ------------------------------------------------
 Parte 2
