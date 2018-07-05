@@ -93,22 +93,6 @@ public class AirBdbRepository {
 
     // usar aggregation
     public List<ReservationCount> getReservationCountByStatus(){
-        /*
-        AggregationResults<ReservationCount> result = mongoTemplate.aggregate(
-                aggregation, "ReservationCount", ReservationCount.class);
-
-        System.out.println("!!!!!!!!!!!!!!!! Aggregation: " + results.getMappedResults().iterator().next().getStatus() + " coutn: " + results.getMappedResults().iterator().next().getCount());
-
-        List<ReservationCount> final_result = result.getMappedResults();
-
-        System.out.println("!!!!!!!!!!!!!!!! partial result ");
-        for (ReservationCount rc : result) {
-            System.out.println("rc status " + rc.getStatus() + " ||| rc count " + rc.getCount());
-        }
-        System.out.println( "!!!!!!!!!!!!!!!! final result " + final_result);
-
-        return final_result;
-        */
 
         GroupOperation groupByStatusAndSumCount = group("status")
                 .count().as("count").first("status").as("status");

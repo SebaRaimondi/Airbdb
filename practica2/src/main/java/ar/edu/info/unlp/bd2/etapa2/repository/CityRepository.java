@@ -11,7 +11,7 @@ public interface CityRepository extends MongoRepository < City, String >{
 
     // así sería un find by name like implementado, pero como que puedo escribir metodos que se hacen solos como abajo
     /*    @Query("{ 'name' : { $regex: ?0 } }")
-     List<City> getCitiesMatching(String name);    */
+          List<City> getCitiesMatching(String name);    */
 
     List<City> findByNameLikeOrderByNameAsc(String name);
 }
