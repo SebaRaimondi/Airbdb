@@ -148,7 +148,7 @@ public class AirBdbRepository {
 
   public List<Property> getAllPropertiesReservedByUser(String userEmail) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT prop FROM Reservation r, User u, Property prop WHERE u.username=:username AND r.user.id = u.id AND r.apartment.id = prop.id";
+    String stmt = "SELECT prop FROM Reservation r join  r.user u join r.apartment prop WHERE u.username=:username";
     Query query = session.createQuery(stmt);
     query.setParameter("username", userEmail);
     List<Property> results = query.getResultList();
@@ -160,7 +160,8 @@ public class AirBdbRepository {
 
   public List<User> getUsersSpendingMoreThan(double amount) {
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u  GROUP BY u HAVING sum(r.apartment.price) > :amount";
+    // String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u  GROUP BY u HAVING sum(r.apartment.price) > :amount";
+    String stmt = "SELECT u FROM Reservation r join r.user u GROUP BY u HAVING sum(r.apartment.price) > :amount";
     Query query = session.createQuery(stmt);
     query.setParameter("amount", amount);
     List<User> results = query.getResultList();
@@ -171,7 +172,7 @@ public class AirBdbRepository {
 
   public List<Object[]> getApartmentTop3Ranking(){
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT rr.reservation.apartment, AVG(rr.points) as points FROM ReservationRating rr, Apartment a WHERE rr.reservation.apartment = a GROUP BY rr.reservation.apartment ORDER BY AVG(rr.points) DESC";
+    String stmt = "SELECT rr.reservation.apartment, AVG(rr.points) as points FROM ReservationRating rr join rr.reservation.apartment a WHERE a.class=Apartment  GROUP BY rr.reservation.apartment ORDER BY AVG(rr.points) DESC";
     Query query = session.createQuery(stmt);
     query.setMaxResults(3);
     List<Object[]> results = query.getResultList();
@@ -187,7 +188,8 @@ public class AirBdbRepository {
 
   public List<User> getUsersThatReservedMoreThan1PropertyDuringASpecificYear(int year){
     Session session = sessionFactory.getCurrentSession();
-    String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u AND YEAR(r.from) = :year AND YEAR(r.to) = :year GROUP BY u HAVING COUNT(*) > 1";
+    // String stmt = "SELECT u FROM Reservation r, User u WHERE r.user = u AND YEAR(r.from) = :year AND YEAR(r.to) = :year GROUP BY u HAVING COUNT(*) > 1";
+    String stmt = "SELECT u FROM Reservation r join r.user u WHERE YEAR(r.from) = :year AND YEAR(r.to) = :year GROUP BY u HAVING COUNT(*) > 1";
     Query query = session.createQuery(stmt);
     query.setParameter("year", year);
     List<User> results = query.getResultList();

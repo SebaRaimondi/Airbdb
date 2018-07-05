@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c6167d3-94e0-445c-be39-1b1d81ccb472" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/model/ReservationStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/AirBdbRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/AirBdbRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/CityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/repository/CityRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="8c6167d3-94e0-445c-be39-1b1d81ccb472" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +12,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Reservation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Reservation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/model/Reservation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -25,15 +20,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReservationStatus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/model/ReservationStatus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -59,10 +45,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AirBdbServiceUnitTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AirBdbServiceUnitTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/info/unlp/bd2/etapa2/service/AirBdbServiceUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2220">
+            <state relative-caret-position="2040">
               <caret line="153" selection-start-line="153" selection-end-line="153" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -536,12 +522,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AirBdbServiceUnitTest_testGetReservationCountByCity - 2018.07.04 at 18h 07m 03s.xml">
-      <configuration name="AirBdbServiceUnitTest.testGetReservationCountByCity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AirBdbServiceUnitTest - 2018.07.04 at 18h 33m 15s.xml">
-      <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AirBdbServiceUnitTest - 2018.07.04 at 18h 35m 12s.xml">
       <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
     </history-entry>
@@ -566,6 +546,12 @@
     <history-entry file="AirBdbServiceUnitTest - 2018.07.05 at 18h 28m 50s.xml">
       <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AirBdbServiceUnitTest - 2018.07.05 at 18h 30m 22s.xml">
+      <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AirBdbServiceUnitTest - 2018.07.05 at 18h 31m 20s.xml">
+      <configuration name="AirBdbServiceUnitTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-2" width="1280" height="722" extended-state="6" />
@@ -584,7 +570,7 @@
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="6" weight="0.26171875" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.26171875" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info id="UI Designer" order="1" />
@@ -599,35 +585,6 @@
       <window_info anchor="bottom" id="Find" order="8" />
       <window_info id="Learn" order="2" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.3970588" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.26171875" />
-      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="bottom" id="TODO" order="4" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info id="Learn" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32912722" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32843137" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -959,23 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/model/ReservationStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/info/unlp/bd2/etapa2/service/AirBdbServiceUnitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2220">
-          <caret line="153" selection-start-line="153" selection-end-line="153" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/utils/ReservationCount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -983,10 +923,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/model/ReservationStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/info/unlp/bd2/etapa2/model/Reservation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/info/unlp/bd2/etapa2/service/AirBdbServiceUnitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
