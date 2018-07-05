@@ -16,4 +16,4 @@ Tecnologías usadas:
   * Spring Data
   * MongoDB
 * Dependencias administradas con:
-  * Maven.
+  * Maven
