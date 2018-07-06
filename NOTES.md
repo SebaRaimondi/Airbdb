@@ -7,7 +7,7 @@
 
 * Usar __usuario bd2_grupo2 para admin la db bd2_grupo2, con password 'topsecret'__.
 
-### Considerar para codear ...
+### Consideraciones al codear ...
 
 * Generales
 	* que las excepciones las levante el servicio (ese sería el que avisa oops algo anda mal)
