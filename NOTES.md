@@ -16,20 +16,5 @@
 * NO usar Criteria para las consultas
 ---
 
-## TAREAS:
-
-* Arreglar el test Collision y isPropAvailable que pasan solos pero no cuando se ejecutan todos juntos.
-* Seba hacer segunda mitad TPE2
-* Hacer TP2
-* Hacer TP2E2
----
-
-## DUDAS:
-
-* NO puedo hacer pasar el testRentPropertyCpllision cuando se ejecutan todos juntos (NOTAR AHORA TAMBIEN PASA ESO CON EL TESTISPROPERTYAVAILABLE!). Algo para remarcar es que si cambio el orden en que se crean las reservas de prueba, tampoco pasa individual. Es como que veo en el sql que se agregan las 2 reservas de prueba sin problemas, pero solamente se muestra el 'no podes agregar la nueva' cuando la nueva colisiona con la primer reserva agregada .... no entiendo. Si se quiere ver el metodo isPropertyAvailable en el repository, contempla el caso en el que la nueva reserva tenga una reserva vieja 'anidada' en sus fechas de from-to o bien sea ésta la que este entre las fechas from-to de una vieja.
-
-
- 
-
 
 
