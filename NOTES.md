@@ -8,12 +8,18 @@
 * Usar __usuario bd2_grupo2 para admin la db bd2_grupo2, con password 'topsecret'__.
 
 ### Considerar para codear ...
-* session.getCurrentSession para no parametrizar la session
-* anotacion transactional en los metodos de la implementacion q implican algo atomico para no hacer tx commit etc en el repo
-* que las excepciones las levante el servicio (ese sería el que avisa oops algo anda mal)
-* que el repo solo acceda a datos
-* usar Query en vez de TypedQuery, ver como referencia el método isPropertyAvailable en el repo de acceso a datos
-* NO usar Criteria para las consultas
+
+* Generales
+	* que las excepciones las levante el servicio (ese sería el que avisa oops algo anda mal)
+	* que el repo solo acceda a datos
+
+* Practica 1
+	* usar Query en vez de TypedQuery ... (se vr el cambio en la oparte 2, hay consultas que devuelven atts o conjunto de atts
+	en vez de entidades, por eso te conviene no tipar el result)
+	* NO usar Criteria para las consultas de la pr 1 (SQL), brinda menos flexibilidad.
+	* session.getCurrentSession para no parametrizar la session
+	* anotacion transactional en los metodos de la implementacion q implican algo atomico para no hacer tx commit etc en el
+	repo
 ---
 
 
