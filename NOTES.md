@@ -20,6 +20,9 @@
 	* session.getCurrentSession para no parametrizar la session
 	* anotacion transactional en los metodos de la implementacion q implican algo atomico para no hacer tx commit etc en el
 	repo
+
+* Practica 2
+	* Ver [Jumpstart using aggregation for analytics](https://resources.mongodb.com/getting-started-with-mongodb/jumpstart-using-aggregation-for-analytics-ruben-terceno), [Spring Data MongoDB](http://www.baeldung.com/spring-data-mongodb-projections-aggregations), [Spring Data + Mongo API](https://docs.spring.io/spring-data/mongodb/docs/current/api/org/springframework/data/mongodb/core/)
 ---
 
 
